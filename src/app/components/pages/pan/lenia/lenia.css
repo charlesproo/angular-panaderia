@@ -1,0 +1,118 @@
+/* Reset de márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Estilo para el encabezado */
+header {
+    background-color: #5D4037; /* Color de fondo marrón */
+    color: white;
+    text-align: center;
+    padding: 2em 0;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+header p {
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+/* Estilo para el contenedor de los productos */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Estilo para el título de los productos */
+h2 {
+    margin-top: 2em;
+    font-size: 1.8em;
+    color: #5D4037; /* Color marrón para los títulos */
+    margin-bottom: 1em;
+}
+
+/* Estilo de las tarjetas de los productos */
+.product {
+    display: inline-block;
+    width: 30%;
+    margin: 1.5%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    vertical-align: top;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+/* Asegura que los enlaces dentro de los productos no tengan subrayado */
+.product a {
+    text-decoration: none;  /* Elimina el subrayado */
+    color: inherit;         /* Hereda el color del texto */
+}
+
+/* Estilo de las imágenes de los productos */
+.product img {
+    width: 100%;            /* Ancho completo del contenedor */
+    height: 200px;          /* Altura fija para todas las imágenes */
+    object-fit: cover;      /* Mantiene la proporción y recorta la imagen si es necesario */
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Estilo del título de los productos */
+.product h3 {
+    color: #5D4037;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+}
+
+/* Estilo de la descripción de los productos */
+.product p {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Estilo cuando se pasa el cursor sobre un producto */
+.product:hover {
+    transform: translateY(-5px);
+}
+
+/* Estilo del footer */
+footer {
+    background-color: #5D4037; /* Fondo marrón */
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    position: relative;
+    width: 100%;
+    margin-top: 2em;
+}
+
+/* Estilo responsive: productos más pequeños en pantallas más pequeñas */
+@media (max-width: 768px) {
+    .product {
+        width: 45%; /* Aumenta el tamaño de los productos en pantallas medianas */
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        width: 100%; /* Los productos ocupan todo el ancho en pantallas pequeñas */
+    }
+}
