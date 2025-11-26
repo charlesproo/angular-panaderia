@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
+import { RouterOutlet, RouterModule } from '@angular/router';
 import { Cabecera } from "./components/cabecera/cabecera";
 import { Pie } from "./components/pie/pie";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Cabecera, Pie],
+  imports: [RouterOutlet, Cabecera, Pie, RouterModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

@@ -10,6 +10,7 @@ import { Galletas } from './components/pages/pasteleria/galletas/galletas';
 import { Croissant } from './components/pages/pasteleria/croissant/croissant';
 import { Magdalenas } from './components/pages/pasteleria/magdalenas/magdalenas';
 import { Pastelito } from './components/pages/pastelito/pastelito';
+import { RegistrarseComponent } from './components/pages/registrarse/registrarse';
 
 export const routes: Routes = [
     {path: 'pan', component: Pan},
@@ -22,6 +23,6 @@ export const routes: Routes = [
     {path: 'galletas', component: Galletas},
     {path: 'croissant', component: Croissant},
     {path: 'magdalenas', component: Magdalenas},
-    {path: '', component: Pastelito}
-
+    {path: '', component: Pastelito},
+    {path: 'registrarse', component: RegistrarseComponent}
 ];
