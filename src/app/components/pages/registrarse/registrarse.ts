@@ -27,7 +27,7 @@ export class RegistrarseComponent {
       
       this.router.navigate(['']);  
       
-      this.usuario = { nombre: '', apellido: '', email: '', contrasenia: '' };
+      this.usuario = { nombre: '', apellido: '', contrasenia: '', email: ''};
     } else {
       alert('Por favor, complete todos los campos');
     }

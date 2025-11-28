@@ -11,6 +11,7 @@ import { Croissant } from './components/pages/pasteleria/croissant/croissant';
 import { Magdalenas } from './components/pages/pasteleria/magdalenas/magdalenas';
 import { Pastelito } from './components/pages/pastelito/pastelito';
 import { RegistrarseComponent } from './components/pages/registrarse/registrarse';
+import { InicioSesion } from './components/pages/inicio-sesion/inicio-sesion';
 
 export const routes: Routes = [
     {path: 'pan', component: Pan},
@@ -24,5 +25,6 @@ export const routes: Routes = [
     {path: 'croissant', component: Croissant},
     {path: 'magdalenas', component: Magdalenas},
     {path: '', component: Pastelito},
-    {path: 'registrarse', component: RegistrarseComponent}
+    {path: 'registrarse', component: RegistrarseComponent},
+    {path: 'inicio-sesion', component: InicioSesion}
 ];

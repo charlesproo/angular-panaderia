@@ -17,7 +17,7 @@ export class Auth {
     }
   }
 
-  almacenarUsuario(nombre: string, apellido: string, contrasenia: string, email: string): void { 
+  almacenarUsuario(nombre: string, apellido: string, email: string, contrasenia: string): void { 
     const nuevoUsuario = new Usuario(nombre, apellido, email, contrasenia);
     this.usuarios.push(nuevoUsuario);
     localStorage.setItem('usuarios', JSON.stringify(this.usuarios));
