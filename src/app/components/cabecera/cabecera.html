@@ -1,6 +1,5 @@
 <nav class="lineaNavegacion">
     <div class="logo">
-        <img src="" alt="">
         <a routerLink="">Pastelito</a>
     </div>
     <ul class="links">
@@ -20,7 +19,25 @@
                 <li><a routerLink="magdalenas">Magdalenas</a></li>
             </ul>
         </li>
-        <li><a routerLink="inicio-sesion">Iniciar Sesión</a></li>
-        <li><a routerLink="registrarse">Registrarse</a></li>
+        
+        <li *ngIf="auth.isLoggedIn">
+            <a routerLink="cesta">
+                <i class="fas fa-shopping-basket"></i> Cesta
+            </a>
+        </li>
+
+        <li *ngIf="!auth.isLoggedIn">
+            <a routerLink="inicio-sesion">Iniciar Sesión</a>
+        </li>
+        <li *ngIf="auth.isLoggedIn">
+            <a routerLink="mi-cuenta">Mi Cuenta</a>
+        </li>
+
+        <li *ngIf="!auth.isLoggedIn">
+            <a routerLink="registrarse">Registrarse</a>
+        </li>
+        <li *ngIf="auth.isLoggedIn">
+            <a (click)="cerrarSesion()" style="cursor: pointer;">Cerrar Sesión</a>
+        </li>
     </ul>
 </nav>

@@ -1,4 +1,3 @@
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -13,9 +12,12 @@ body {
 
 /* Cabecera */
 .header {
-  background-image: url('https://n9.cl/ad0cfz');
+  background-image: url('https://img.freepik.com/fotos-premium/agricultor-senior-campo-trigo-revisando-cultivos_308072-5017.jpg');
   background-size: cover;
-  background-position: center;
+  /* CAMBIO: Ajustamos la posición vertical a 70% para subir el foco de la imagen (el granjero) */
+  background-position: center 70%; 
+  /* OPCIONAL: Usamos fixed para un efecto de paralaje suave */
+  background-attachment: fixed;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -158,4 +160,21 @@ body {
   color: white;
   text-align: center;
   padding: 20px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .product-categories {
+    flex-direction: column;
+    align-items: center;
+  }
+  .category {
+    width: 90%;
+  }
+  .header-content h1 {
+    font-size: 2.5rem;
+  }
+  .header-content p {
+    font-size: 1.2rem;
+  }
 }

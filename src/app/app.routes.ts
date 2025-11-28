@@ -12,6 +12,7 @@ import { Magdalenas } from './components/pages/pasteleria/magdalenas/magdalenas'
 import { Pastelito } from './components/pages/pastelito/pastelito';
 import { RegistrarseComponent } from './components/pages/registrarse/registrarse';
 import { InicioSesion } from './components/pages/inicio-sesion/inicio-sesion';
+import { Cesta } from './components/pages/cesta/cesta';
 
 export const routes: Routes = [
     {path: 'pan', component: Pan},
@@ -26,5 +27,6 @@ export const routes: Routes = [
     {path: 'magdalenas', component: Magdalenas},
     {path: '', component: Pastelito},
     {path: 'registrarse', component: RegistrarseComponent},
-    {path: 'inicio-sesion', component: InicioSesion}
+    {path: 'inicio-sesion', component: InicioSesion},
+    {path: 'cesta', component: Cesta}
 ];

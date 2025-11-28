@@ -1,0 +1,64 @@
+<header>
+    <h1>Tu Cesta de Compra</h1>
+    <p>Revisa y gestiona tus productos antes de finalizar el pedido.</p>
+</header>
+
+<div class="container">
+    <h2>Resumen del Pedido</h2>
+
+    <!-- Contenido de la cesta: se muestra si hay items -->
+    <div *ngIf="cestaItems().length > 0; else emptyCart" class="cesta-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio Unitario</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of cestaItems()">
+                    <td class="product-name">{{ item.nombre }}</td>
+                    <td>{{ item.precioUnitario | number:'1.2-2' }}€</td>
+                    <td>
+                        <!-- Podrías añadir aquí inputs para cambiar la cantidad -->
+                        {{ item.cantidad }}
+                    </td>
+                    <td>{{ (item.cantidad * item.precioUnitario) | number:'1.2-2' }}€</td>
+                    <td>
+                        <button class="btn-eliminar" (click)="eliminarItem(item.id)">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="total-label">Total a Pagar</td>
+                    <td colspan="2" class="total-value">{{ calcularTotal() | number:'1.2-2' }}€</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="checkout-actions">
+            <button class="btn-primary" (click)="finalizarCompra()">
+                Finalizar Compra
+            </button>
+            <a routerLink="/" class="btn-secondary">
+                Seguir Comprando
+            </a>
+        </div>
+    </div>
+
+    <!-- Mensaje si la cesta está vacía -->
+    <ng-template #emptyCart>
+        <div class="cesta-vacia">
+            <i class="fas fa-shopping-basket fa-5x"></i>
+            <h3>Tu cesta está vacía</h3>
+            <p>Parece que no has añadido ningún producto. ¡Explora nuestras deliciosas categorías!</p>
+            <a routerLink="/" class="btn-primary">Ir a la Tienda</a>
+        </div>
+    </ng-template>
+</div>
