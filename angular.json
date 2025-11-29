@@ -86,6 +86,16 @@
               "src/styles.css"
             ]
           }
+        },
+        "doc": {
+          "builder": "@compodoc/compodoc:compodoc",
+          "options": {
+            "tsconfig": "tsconfig.json",
+            "outputPath": "documentation",
+            "name": "Panadería App Documentation",
+            "theme": "material",
+            "coverageTest": 70
+          }
         }
       }
     }
