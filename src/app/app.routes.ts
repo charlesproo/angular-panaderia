@@ -1,3 +1,4 @@
+//IMPORTACIONES DE TODOS LOS MODULOS QUE CREAMOS PARA USAR EN LA PAGINA EN EL FUTURO
 import { Routes } from '@angular/router';
 import { Pan } from './components/pages/pan/pan';
 import { Pasteleria } from './components/pages/pasteleria/pasteleria';
@@ -14,6 +15,7 @@ import { RegistrarseComponent } from './components/pages/registrarse/registrarse
 import { InicioSesion } from './components/pages/inicio-sesion/inicio-sesion';
 import { Cesta } from './components/pages/cesta/cesta';
 
+//ASIGNAMOS UN NOMBRE AL PATH DE CADA COMPONENTE PARA USAR EN HTML CON ROUTERLINK
 export const routes: Routes = [
     {path: 'pan', component: Pan},
     {path: 'pasteleria', component: Pasteleria},

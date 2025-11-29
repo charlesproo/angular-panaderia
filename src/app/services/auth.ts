@@ -1,47 +1,63 @@
+//IMPORTACION DE UN MODULO DE ANGULAR Y LA CLASE USUARIO QUE CREAMOS ANTERIORMENTE
 import { Injectable } from '@angular/core';
 import { Usuario } from '../models/usuario';
 
+//DECORADOR PARA DEFINIR ESTA CLASE COMO UN SERVICIO INYECTABLE EN TODA LA APLICACIÓN
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root',
 })
+
+//CLASE DE AUTENTICACION PARA GESTIONAR EL INICIO DE SESION Y REGISTRO DE USUARIOS
 export class Auth {
-  private usuarios: Usuario[] = [];
-  private _isLoggedIn: boolean = false;
-  private usuarioActual: Usuario | null = null;
+  private usuarios: Usuario[] = [];
+  private _isLoggedIn: boolean = false;
+  private usuarioActual: Usuario | null = null;
 
-  constructor() {
-    const almacenUsuarios = localStorage.getItem('usuarios');
-    if (almacenUsuarios) {
-      this.usuarios = JSON.parse(almacenUsuarios);
-    }
-  }
+  //CONSTRUCTOR DEL SERVICIO, SE EJECUTA AL INICIAR EL SERVICIO
+  constructor() {
+    //RECUPERAMOS LOS USUARIOS ALMACENADOS EN EL LOCAL STORAGE
+    const almacenUsuarios = localStorage.getItem('usuarios');
+    //SI HAY DATOS, LOS PARSEAMOS Y LOS ASIGNAMOS AL ARRAY DE USUARIOS
+    if (almacenUsuarios) {
+      this.usuarios = JSON.parse(almacenUsuarios);
+    }
+  }
 
-  public get isLoggedIn(): boolean {
-    return this._isLoggedIn;
-  }
+  //GETTER BOOLEANO PARA OBTENER EL ESTADO DE LOGUEO DEL USUARIO EN CASO DE QUE ESTE 
+  //DEVUELVE TRUE Y SI NO FALSE, UTILIZAREMOS MAS ADELANTE PARA HTML
+  public get isLoggedIn(): boolean {
+    return this._isLoggedIn;
+  }
 
-  almacenarUsuario(nombre: string, apellido: string, email: string, contrasenia: string): void { 
-    const nuevoUsuario = new Usuario(nombre, apellido, email, contrasenia);
-    this.usuarios.push(nuevoUsuario);
-    localStorage.setItem('usuarios', JSON.stringify(this.usuarios));
-  }
+  //FUNCION PARA AÑADIR UN NUEVO USUARIO AL ARRAY Y AL LOCAL STORAGE
+  almacenarUsuario(nombre: string, apellido: string, email: string, contrasenia: string): void {
+    const nuevoUsuario = new Usuario(nombre, apellido, email, contrasenia);
+    this.usuarios.push(nuevoUsuario);
+    //GUARDAMOS EL ARRAY COMPLETO EN EL LOCAL STORAGE CON FORMATO JSON
+    localStorage.setItem('usuarios', JSON.stringify(this.usuarios));
+  }
 
-  validarCredenciales(correo: string, contraseña: string): boolean {
-    const usuarioEncontrado = this.usuarios.find(
-      (usuario) => usuario.email === correo && usuario.contrasenia === contraseña
-    );
-    
-    if (usuarioEncontrado) {
-        this._isLoggedIn = true;
-        this.usuarioActual = usuarioEncontrado;
-    } else {
-        this._isLoggedIn = false;
-        this.usuarioActual = null;
-    }
+  //FUNCION PARA COMPROBAR SI LAS CREDENCIALES COINCIDEN CON UN USUARIO EXISTENTE 
+  //DEVOLVIENDO UN BOOLEANO Y RECORRIENDOLO MEDIANTE LAMBDA
+  validarCredenciales(correo: string, contraseña: string): boolean {
+    const usuarioEncontrado = this.usuarios.find(
+      (usuario) => usuario.email === correo && usuario.contrasenia === contraseña
+    );
 
-    return this._isLoggedIn;  
-  }
+    //SI SE ENCUENTRA UN USUARIO, SE PONE COMO LOGUEADO Y SE ASIGNA EL USUARIO ACTUAL QUE INICIA SESION
+    if (usuarioEncontrado) {
+      this._isLoggedIn = true;
+      this.usuarioActual = usuarioEncontrado;
+    } else {
+      this._isLoggedIn = false;
+      this.usuarioActual = null;
+    }
 
+    return this._isLoggedIn;
+  }
+
+  //FUNCION PARA CERRAR LA SESION DEL USUARIO PONIENDO A FALSE LA VARIABLE Y NULL AL 
+  //SUARIO QUE ESTA PORQUE CIERRA SESION
   logout(): void {
     this._isLoggedIn = false;
     this.usuarioActual = null;

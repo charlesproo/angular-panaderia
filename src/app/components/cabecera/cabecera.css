@@ -1,7 +1,7 @@
-/* Estilos generales para el navbar */
+/* ESTILO GENERAL PARA EL NAV */
 nav.lineaNavegacion {
-    background-color: #333; /* Fondo oscuro */
-    color: white;
+    background-color: #333; 
+    color: white; 
     padding: 15px 20px;
     font-family: Arial, sans-serif;
     display: flex;
@@ -9,6 +9,7 @@ nav.lineaNavegacion {
     align-items: center;
 }
 
+/* ESTILO DEL LOGO DENTRO DE LA BARRA DE NAVEGACIÓN */
 nav .logo a {
     color: white;
     font-size: 24px;
@@ -16,7 +17,7 @@ nav .logo a {
     font-weight: bold;
 }
 
-/* Estilo de los enlaces de navegación */
+/* ESTILO DE LA LISTA NO ORDENADA QUE CONTIENE LOS ENLACES PRINCIPALES */
 nav .links {
     list-style: none;
     display: flex;
@@ -24,11 +25,13 @@ nav .links {
     padding: 0;
 }
 
+/* ESTILO DE CADA ITEM DE LA LISTA DE ENLACES  */
 nav .links li {
     position: relative;
     margin-right: 20px;
 }
 
+/* ESTILO DE LOS ENLACES INDIVIDUALES CON LA ETIQUETA A */
 nav .links a {
     color: white;
     text-decoration: none;
@@ -38,11 +41,12 @@ nav .links a {
     text-transform: uppercase;
 }
 
+/* EFECTO HOVER DE LOS ENLACES */
 nav .links a:hover {
-    background-color: #555; /* Hover de los enlaces */
+    background-color: #555; 
 }
 
-/* Estilos para el submenú */
+/* ESTILOS PARA EL SUBMENÚ */
 nav .links ul {
     list-style: none;
     position: absolute;
@@ -56,26 +60,23 @@ nav .links ul {
     z-index: 10;
 }
 
+/* MUESTRA EL SUBMENÚ CUANDO EL RATÓN ESTÁ SOBRE EL ITEM DE LISTA */
 nav .links li:hover > ul {
-    display: block; /* Mostrar el submenú al pasar el ratón */
+    display: block; 
 }
 
+/* ESTILO DE LOS ENLACES DENTRO DEL SUBMENÚ */
 nav .links ul li a {
     padding: 10px;
     font-size: 14px;
 }
 
+/*EFECTO HOVER DE LOS ENLACES DENTRO DEL SUBMENÚ */
 nav .links ul li a:hover {
     background-color: #555;
 }
 
-/* Estilos para los submenús dentro de otros submenús */
-nav .links ul ul {
-    left: 100%;
-    top: 0;
-}
-
-/* Estilo para la línea que separa los items de navegación */
+/*  ESTILO PARA LA LÍNEA QUE SEPARA LOS ITEMS DE NAVEGACIÓN */
 nav .lineaNavegacion {
     border-bottom: 2px solid #444;
 }
