@@ -1,5 +1,5 @@
 <div class="registro-container">
-  <h2>Formulario de Registro  Hola David</h2>
+  <h2>Formulario de Registro Hola David</h2>
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="nombre">Nombre:</label>
@@ -13,9 +13,23 @@
       <label for="email">Correo Electrónico:</label>
       <input type="email" id="email" [(ngModel)]="usuario.email" name="email" required placeholder="Introduce tu correo electrónico">
     </div>
+    
     <div class="form-group">
-      <label for="contrasena">Contraseña:</label>
-      <input type="password" id="contrasena" [(ngModel)]="usuario.contrasenia" name="contrasena" required placeholder="Crea una contraseña">
+      <label for="contrasenia">Contraseña:</label>
+      <input 
+        type="password" 
+        id="contrasenia" 
+        [(ngModel)]="usuario.contrasenia" 
+        name="contrasenia" 
+        required 
+        placeholder="Crea una contraseña"
+        (input)="validarContrasenia()" >
+      
+      <div *ngIf="usuario.contrasenia && passwordErrors.length > 0" class="error-container">
+        <p class="error-header">La contraseña no es segura. Requisitos:</p>
+        <ul>
+          <li *ngFor="let error of passwordErrors">{{ error }}</li> </ul>
+      </div>
     </div>
     <div class="form-group">
       <input type="submit" value="Registrarse">

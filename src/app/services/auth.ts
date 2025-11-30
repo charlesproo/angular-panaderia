@@ -1,6 +1,7 @@
 //IMPORTACION DE UN MODULO DE ANGULAR Y LA CLASE USUARIO QUE CREAMOS ANTERIORMENTE
 import { Injectable } from '@angular/core';
 import { Usuario } from '../models/usuario';
+import * as encriptacion from 'bcryptjs'
 
 //DECORADOR PARA DEFINIR ESTA CLASE COMO UN SERVICIO INYECTABLE EN TODA LA APLICACIÓN
 @Injectable({
@@ -12,6 +13,8 @@ export class Auth {
   private usuarios: Usuario[] = [];
   private _isLoggedIn: boolean = false;
   private usuarioActual: Usuario | null = null;
+
+  private readonly valorSeguro = 10
 
   //CONSTRUCTOR DEL SERVICIO, SE EJECUTA AL INICIAR EL SERVICIO
   constructor() {
@@ -31,7 +34,10 @@ export class Auth {
 
   //FUNCION PARA AÑADIR UN NUEVO USUARIO AL ARRAY Y AL LOCAL STORAGE
   almacenarUsuario(nombre: string, apellido: string, email: string, contrasenia: string): void {
-    const nuevoUsuario = new Usuario(nombre, apellido, email, contrasenia);
+    const hashClave = encriptacion.hashSync(contrasenia, this.valorSeguro)
+
+    const nuevoUsuario = new Usuario(nombre, apellido, email, hashClave);
+
     this.usuarios.push(nuevoUsuario);
     //GUARDAMOS EL ARRAY COMPLETO EN EL LOCAL STORAGE CON FORMATO JSON
     localStorage.setItem('usuarios', JSON.stringify(this.usuarios));
@@ -39,15 +45,21 @@ export class Auth {
 
   //FUNCION PARA COMPROBAR SI LAS CREDENCIALES COINCIDEN CON UN USUARIO EXISTENTE 
   //DEVOLVIENDO UN BOOLEANO Y RECORRIENDOLO MEDIANTE LAMBDA
-  validarCredenciales(correo: string, contraseña: string): boolean {
+  validarCredenciales(correo: string, contrasenia: string): boolean {
     const usuarioEncontrado = this.usuarios.find(
-      (usuario) => usuario.email === correo && usuario.contrasenia === contraseña
+      (usuario) => usuario.email === correo
     );
+
+    let valido = false
 
     //SI SE ENCUENTRA UN USUARIO, SE PONE COMO LOGUEADO Y SE ASIGNA EL USUARIO ACTUAL QUE INICIA SESION
     if (usuarioEncontrado) {
+      valido = encriptacion.compareSync(contrasenia, usuarioEncontrado.contrasenia)
+    }
+
+    if (valido) {
       this._isLoggedIn = true;
-      this.usuarioActual = usuarioEncontrado;
+      this.usuarioActual = usuarioEncontrado  ?? null;
     } else {
       this._isLoggedIn = false;
       this.usuarioActual = null;
