@@ -23,11 +23,11 @@ export class RegistrarseComponent {
 
   // Requisitos de la contraseña
   private readonly REQUISITOS = {
-    minLength: 8,
-    hasUpperCase: /[A-Z]/,
-    hasLowerCase: /[a-z]/,
-    hasNumber: /[0-9]/,
-    hasSpecialChar: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,
+    logitudMinima: 8,
+    mayusculas: /[A-Z]/,
+    minusculas: /[a-z]/,
+    numeros: /[0-9]/,
+    caracterEspecial: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,
   };
 
   constructor(private authService: Auth, private router: Router) { } 
@@ -38,27 +38,27 @@ export class RegistrarseComponent {
     this.passwordErrors = []; // Limpiar errores anteriores
     
     // 1. Longitud Mínima
-    if (clave.length < this.REQUISITOS.minLength) {
-      this.passwordErrors.push(`Debe tener al menos ${this.REQUISITOS.minLength} caracteres.`);
+    if (clave.length < this.REQUISITOS.logitudMinima) {
+      this.passwordErrors.push(`Debe tener al menos ${this.REQUISITOS.logitudMinima} caracteres.`);
     }
 
     // 2. Mayus
-    if (!this.REQUISITOS.hasUpperCase.test(clave)) {
+    if (!this.REQUISITOS.mayusculas.test(clave)) {
       this.passwordErrors.push('Debe incluir al menos una letra mayúscula.');
     }
 
     // 3. Minusculas
-    if (!this.REQUISITOS.hasLowerCase.test(clave)) {
+    if (!this.REQUISITOS.minusculas.test(clave)) {
       this.passwordErrors.push('Debe incluir al menos una letra minúscula.');
     }
 
     // 4. Numeros
-    if (!this.REQUISITOS.hasNumber.test(clave)) {
+    if (!this.REQUISITOS.numeros.test(clave)) {
       this.passwordErrors.push('Debe incluir al menos un número.');
     }
 
     // 5. Caracteres especiales
-    if (!this.REQUISITOS.hasSpecialChar.test(clave)) {
+    if (!this.REQUISITOS.caracterEspecial.test(clave)) {
       this.passwordErrors.push('Debe incluir al menos un carácter especial (ej. !@#$%).');
     }
 
