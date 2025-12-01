@@ -1,28 +1,47 @@
-//IMPORTAMOS EL DECORADOR INJECTABLE Y SIGNAL DE ANGULAR 
 import { Injectable, signal } from '@angular/core';
 
-//INTERFAZ QUE CONTIENE LOS DATOS QUE VA A TENER LA CESTA EN ESE MODULO
+/**
+ * Interfaz que representa un producto dentro de la cesta de compra.
+ */
 export interface ItemCesta {
+  /** Identificador único del producto */
   id: number;
+  /** Nombre del producto */
   nombre: string;
+  /** Cantidad del producto en la cesta */
   cantidad: number;
+  /** Precio unitario del producto */
   precioUnitario: number;
 }
 
-//DECORADOR PARA DEFINIR ESTA CLASE COMO UN SERVICIO INYECTABLE EN TODA LA APLICACIÓN
+/**
+ * Servicio encargado de gestionar la lógica de la cesta de compra.
+ * Permite añadir productos, eliminar productos, calcular el total
+ * y finalizar la compra.
+ *
+ * @service
+ */
 @Injectable({
   providedIn: 'root'
 })
-
-//CLASE SERVICIO ENCARGADA DE GESTIONAR LA LÓGICA DE LA CESTA DE COMPRA
 export class CestaService {
-  //VARIABLE SIGNAL QUE ALMACENA LOS ITEMS DE LA CESTA
+
+  /**
+   * Signal que almacena los productos actualmente en la cesta.
+   */
   cestaItems = signal<ItemCesta[]>([]);
 
-  //FUNCION PARA AÑADIR UN PRODUCTO A LA CESTA O AUMENTAR SU CANTIDAD
-  anadirProducto(id: number, nombre: string, precioUnitario: number, cantidad: number = 1) {
+  /**
+   * Añade un producto a la cesta o incrementa su cantidad si ya existe.
+   *
+   * @param {number} id - Identificador único del producto.
+   * @param {string} nombre - Nombre del producto.
+   * @param {number} precioUnitario - Precio unitario del producto.
+   * @param {number} [cantidad=1] - Cantidad a añadir (por defecto 1).
+   * @returns {void}
+   */
+  anadirProducto(id: number, nombre: string, precioUnitario: number, cantidad: number = 1): void {
     const items = this.cestaItems();
-    //COMPROBAMOS SI EL PRODUCTO YA EXISTE EN LA CESTA POR SU ID PARA INCREMENTAR LA CANTIDAD 
     const existe = items.find(item => item.id === id);
 
     if (existe) {
@@ -31,7 +50,6 @@ export class CestaService {
           item.id === id ? { ...item, cantidad: item.cantidad + cantidad } : item
         )
       );
-      //EN CASO QUE EL PRODUCTO SEA NUEVO AÑADIMOS A LA CESTA (ARRAY) EL NUEVO ITEM CON SUS DATOS
     } else {
       this.cestaItems.update(arr => [
         ...arr,
@@ -40,22 +58,34 @@ export class CestaService {
     }
   }
 
-  //FUNCION PARA ELIMINAR UN ITEM DE LA CESTA POR SU ID
-  eliminarItem(id: number) {
+  /**
+   * Elimina un producto de la cesta por su ID.
+   *
+   * @param {number} id - Identificador del producto a eliminar.
+   * @returns {void}
+   */
+  eliminarItem(id: number): void {
     this.cestaItems.update(arr => arr.filter(item => item.id !== id));
   }
 
-  //FUNCION PARA CALCULAR EL PRECIO TOTAL DE LA CESTA
-  calcularTotal() {
-    //UTILIZAMOS MEOTDO REDUCE PARA SUMAR LA CANTIDAD * PRECIO UNITARIO DE CADA ITEM, DANDONOS EL RESULTAOD TOTAL DEL PRODUCTO
+  /**
+   * Calcula el total de la cesta sumando cantidad * precio unitario de cada producto.
+   *
+   * @returns {number} Total acumulado de la cesta.
+   */
+  calcularTotal(): number {
     return this.cestaItems().reduce(
       (total, item) => total + item.cantidad * item.precioUnitario,
       0
     );
   }
 
-  //FUNCION PARA VACIAR LA CESTA DESPUÉS DE LA COMPRA
-  finalizarCompra() {
+  /**
+   * Vacía la cesta después de finalizar la compra.
+   *
+   * @returns {void}
+   */
+  finalizarCompra(): void {
     this.cestaItems.set([]);
   }
 }

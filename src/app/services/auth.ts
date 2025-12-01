@@ -3,69 +3,105 @@ import { Injectable } from '@angular/core';
 import { Usuario } from '../models/usuario';
 import * as encriptacion from 'bcryptjs'
 
-// DECORADOR PARA DEFINIR ESTA CLASE COMO UN SERVICIO INYECTABLE EN TODA LA APLICACIÓN
+/**
+ * Servicio de autenticación encargado de gestionar el registro,
+ * inicio de sesión y control de usuarios dentro de la aplicación.
+ *
+ * - Almacena usuarios en localStorage
+ * - Permite validar credenciales cifradas con bcrypt
+ * - Mantiene el estado de sesión del usuario actual
+ */
 @Injectable({
   providedIn: 'root',
 })
-
-// CLASE DE AUTENTICACION PARA GESTIONAR EL INICIO DE SESION Y REGISTRO DE USUARIOS
 export class Auth {
+  /** Lista de usuarios almacenados en localStorage */
   private usuarios: Usuario[] = [];
+
+  /** Indica si el usuario está actualmente logueado */
   private _isLoggedIn: boolean = false;
+
+  /** Usuario actualmente autenticado */
   private usuarioActual: Usuario | null = null;
 
+  /** Número de rondas para el cifrado bcrypt */
   private readonly valorSeguro = 10;
 
-  // CONSTRUCTOR DEL SERVICIO, SE EJECUTA AL INICIAR EL SERVICIO
+  /**
+   * Constructor del servicio.
+   * Recupera los usuarios del localStorage y genera un usuario por defecto si no existe.
+   */
   constructor() {
-    // RECUPERAMOS LOS USUARIOS ALMACENADOS EN EL LOCAL STORAGE
     const almacenUsuarios = localStorage.getItem('usuarios');
 
-    // SI HAY DATOS, LOS PARSEAMOS Y LOS ASIGNAMOS AL ARRAY DE USUARIOS
     if (almacenUsuarios) {
       this.usuarios = JSON.parse(almacenUsuarios);
     }
 
-    // CREAMOS UN USUARIO POR DEFECTO SIEMPRE, YA SEA QUE HAYA O NO USUARIOS EN LOCAL STORAGE
     this.crearUsuarioPorDefecto();
   }
 
-  // FUNCION PARA CREAR UN USUARIO POR DEFECTO
+  /**
+   * Crea un usuario por defecto si no existe.
+   * Este usuario siempre está disponible para pruebas:
+   * - Email: fernando.prueba@angular.com
+   * - Contraseña: 12345678Fp.
+   *
+   * @private
+   */
   private crearUsuarioPorDefecto(): void {
-    const usuarioDefecto = this.usuarios.find(usuario => usuario.email === 'fernando.prueba@angular.com');
+    const usuarioDefecto = this.usuarios.find(
+      usuario => usuario.email === 'fernando.prueba@angular.com'
+    );
 
     if (!usuarioDefecto) {
       this.almacenarUsuario('Fernando', 'Prueba', 'fernando.prueba@angular.com', '12345678Fp.');
     }
   }
 
-  // GETTER BOOLEANO PARA OBTENER EL ESTADO DE LOGUEO DEL USUARIO EN CASO DE QUE ESTE 
-  // DEVUELVE TRUE Y SI NO FALSE, UTILIZAREMOS MAS ADELANTE PARA HTML
+  /**
+   * Retorna si existe un usuario logueado en el sistema.
+   *
+   * @returns {boolean} `true` si el usuario está autenticado, `false` en caso contrario.
+   */
   public get isLoggedIn(): boolean {
     return this._isLoggedIn;
   }
 
-  // FUNCION PARA AÑADIR UN NUEVO USUARIO AL ARRAY Y AL LOCAL STORAGE
+  /**
+   * Registra un nuevo usuario en la aplicación.
+   * La contraseña se encripta utilizando bcrypt antes de almacenarse.
+   *
+   * @param nombre - Nombre del usuario
+   * @param apellido - Apellido del usuario
+   * @param email - Email del usuario (único)
+   * @param contrasenia - Contraseña sin cifrar
+   */
   almacenarUsuario(nombre: string, apellido: string, email: string, contrasenia: string): void {
     const hashClave = encriptacion.hashSync(contrasenia, this.valorSeguro);
 
     const nuevoUsuario = new Usuario(nombre, apellido, email, hashClave);
 
     this.usuarios.push(nuevoUsuario);
-    // GUARDAMOS EL ARRAY COMPLETO EN EL LOCAL STORAGE CON FORMATO JSON
     localStorage.setItem('usuarios', JSON.stringify(this.usuarios));
   }
 
-  // FUNCION PARA COMPROBAR SI LAS CREDENCIALES COINCIDEN CON UN USUARIO EXISTENTE 
-  // DEVOLVIENDO UN BOOLEANO Y RECORRIENDOLO MEDIANTE LAMBDA
+  /**
+   * Valida las credenciales proporcionadas por el usuario.
+   * Comprueba si existe un usuario con ese correo y si la contraseña coincide
+   * mediante comparación bcrypt.
+   *
+   * @param correo - Email del usuario que intenta iniciar sesión
+   * @param contrasenia - Contraseña sin cifrar introducida por el usuario
+   * @returns {boolean} `true` si las credenciales son correctas, `false` si son inválidas
+   */
   validarCredenciales(correo: string, contrasenia: string): boolean {
     const usuarioEncontrado = this.usuarios.find(
-      (usuario) => usuario.email === correo
+      usuario => usuario.email === correo
     );
 
     let valido = false;
 
-    // SI SE ENCUENTRA UN USUARIO, SE PONE COMO LOGUEADO Y SE ASIGNA EL USUARIO ACTUAL QUE INICIA SESION
     if (usuarioEncontrado) {
       valido = encriptacion.compareSync(contrasenia, usuarioEncontrado.contrasenia);
     }
@@ -81,8 +117,10 @@ export class Auth {
     return this._isLoggedIn;
   }
 
-  // FUNCION PARA CERRAR LA SESION DEL USUARIO PONIENDO A FALSE LA VARIABLE Y NULL AL 
-  // USUARIO QUE ESTA PORQUE CIERRA SESION
+  /**
+   * Cierra la sesión del usuario actual.
+   * Restablece el estado de autenticación.
+   */
   logout(): void {
     this._isLoggedIn = false;
     this.usuarioActual = null;

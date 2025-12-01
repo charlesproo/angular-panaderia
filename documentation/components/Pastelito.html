@@ -1,0 +1,431 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>panaderia documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">panaderia documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  Pastelito</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/pages/pastelito/pastelito.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente encargado de mostrar la vista de &quot;Pastelito&quot;.
+Actualmente no contiene lógica interna, pero sirve como punto de navegación
+dentro de la aplicación mediante el uso de RouterLink.</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-pastelito</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>RouterLink</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./pastelito.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./pastelito.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/pages/pastelito/pastelito.ts:17</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor del componente Pastelito.
+No recibe dependencias ya que el componente actúa solamente como vista.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { RouterLink } from &quot;@angular/router&quot;;
+
+/**
+ * Componente encargado de mostrar la vista de &quot;Pastelito&quot;.
+ * Actualmente no contiene lógica interna, pero sirve como punto de navegación
+ * dentro de la aplicación mediante el uso de RouterLink.
+ *
+ * @component
+ */
+@Component({
+  selector: &#x27;app-pastelito&#x27;,
+  imports: [RouterLink],
+  templateUrl: &#x27;./pastelito.html&#x27;,
+  styleUrl: &#x27;./pastelito.css&#x27;,
+})
+export class Pastelito {
+
+  /**
+   * Constructor del componente Pastelito.
+   * No recibe dependencias ya que el componente actúa solamente como vista.
+   */
+  constructor() {}
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;home-container&quot;&gt;
+  &lt;header class&#x3D;&quot;header&quot;&gt;
+    &lt;!-- Imagen de fondo de la cabecera --&gt;
+    &lt;div class&#x3D;&quot;header-content&quot;&gt;
+      &lt;h1&gt;Panadería El Pastelito&lt;/h1&gt;
+      &lt;p&gt;El sabor de lo hecho en casa, panes y pasteles recién horneados con cariño.&lt;/p&gt;
+      &lt;a href&#x3D;&quot;#productos&quot; class&#x3D;&quot;btn-main&quot;&gt;Ver nuestros productos&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;section id&#x3D;&quot;productos&quot; class&#x3D;&quot;product-categories&quot;&gt;
+    &lt;!-- Categoría de Panes Artesanales --&gt;
+    &lt;div class&#x3D;&quot;category category-panes&quot;&gt;
+      &lt;img src&#x3D;&quot;https://thumbs.dreamstime.com/b/delicioso-surtido-de-pan-reci%C3%A9n-horneado-en-un-fondo-r%C3%BAstico-oscuro-200072569.jpg&quot; alt&#x3D;&quot;Panes Artesanales&quot; class&#x3D;&quot;category-image&quot;&gt;
+      &lt;div class&#x3D;&quot;category-info&quot;&gt;
+        &lt;h2&gt;Panes Artesanales&lt;/h2&gt;
+        &lt;p&gt;Desde baguettes hasta panes integrales, todo hecho con los mejores ingredientes.&lt;/p&gt;
+        &lt;a routerLink&#x3D;&quot;/pan&quot; class&#x3D;&quot;btn-primary&quot;&gt;Ver más&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Categoría de El Pastelito --&gt;
+    &lt;div class&#x3D;&quot;category category-pastelito&quot;&gt;
+      &lt;img src&#x3D;&quot;https://png.pngtree.com/thumb_back/fh260/background/20230527/pngtree-large-group-of-different-desserts-on-a-black-background-image_2677193.jpg&quot; alt&#x3D;&quot;El Pastelito&quot; class&#x3D;&quot;category-image&quot;&gt;
+      &lt;div class&#x3D;&quot;category-info&quot;&gt;
+        &lt;h2&gt;Pasteleria&lt;/h2&gt;
+        &lt;p&gt;Pasteles, tartas y galletas recién horneadas para todo tipo de celebraciones.&lt;/p&gt;
+        &lt;a routerLink&#x3D;&quot;/pasteleria&quot; class&#x3D;&quot;btn-primary&quot;&gt;Ver más&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class&#x3D;&quot;cta&quot;&gt;
+    &lt;h2&gt;Haz tu pedido ahora y recíbelo en casa&lt;/h2&gt;
+    &lt;p&gt;Disfruta de nuestras deliciosas creaciones en la comodidad de tu hogar. ¡Haz tu pedido en línea ahora!&lt;/p&gt;
+    &lt;a href&#x3D;&quot;https://panaderia-deliciosa.com/pedir&quot; class&#x3D;&quot;btn-main&quot;&gt;Ordena Ahora&lt;/a&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="home-container">  <header class="header">    <!-- Imagen de fondo de la cabecera -->    <div class="header-content">      <h1>Panadería El Pastelito</h1>      <p>El sabor de lo hecho en casa, panes y pasteles recién horneados con cariño.</p>      <a href="#productos" class="btn-main">Ver nuestros productos</a>    </div>  </header>  <section id="productos" class="product-categories">    <!-- Categoría de Panes Artesanales -->    <div class="category category-panes">      <img src="https://thumbs.dreamstime.com/b/delicioso-surtido-de-pan-reci%C3%A9n-horneado-en-un-fondo-r%C3%BAstico-oscuro-200072569.jpg" alt="Panes Artesanales" class="category-image">      <div class="category-info">        <h2>Panes Artesanales</h2>        <p>Desde baguettes hasta panes integrales, todo hecho con los mejores ingredientes.</p>        <a routerLink="/pan" class="btn-primary">Ver más</a>      </div>    </div>    <!-- Categoría de El Pastelito -->    <div class="category category-pastelito">      <img src="https://png.pngtree.com/thumb_back/fh260/background/20230527/pngtree-large-group-of-different-desserts-on-a-black-background-image_2677193.jpg" alt="El Pastelito" class="category-image">      <div class="category-info">        <h2>Pasteleria</h2>        <p>Pasteles, tartas y galletas recién horneadas para todo tipo de celebraciones.</p>        <a routerLink="/pasteleria" class="btn-primary">Ver más</a>      </div>    </div>  </section>  <section class="cta">    <h2>Haz tu pedido ahora y recíbelo en casa</h2>    <p>Disfruta de nuestras deliciosas creaciones en la comodidad de tu hogar. ¡Haz tu pedido en línea ahora!</p>    <a href="https://panaderia-deliciosa.com/pedir" class="btn-main">Ordena Ahora</a>  </section></div></div>'
+    var COMPONENTS = [{'name': 'App', 'selector': 'app-root'},{'name': 'Bizcocho', 'selector': 'app-bizcocho'},{'name': 'Blanco', 'selector': 'app-blanco'},{'name': 'Cabecera', 'selector': 'app-cabecera'},{'name': 'Cesta', 'selector': 'app-cesta'},{'name': 'Croissant', 'selector': 'app-croissant'},{'name': 'Galletas', 'selector': 'app-galletas'},{'name': 'InicioSesion', 'selector': 'app-inicio-sesion'},{'name': 'Integral', 'selector': 'app-integral'},{'name': 'Lenia', 'selector': 'app-lenia'},{'name': 'Magdalenas', 'selector': 'app-magdalenas'},{'name': 'Pan', 'selector': 'app-pan'},{'name': 'Pasteleria', 'selector': 'app-pasteleria'},{'name': 'Pastelito', 'selector': 'app-pastelito'},{'name': 'Pie', 'selector': 'app-pie'},{'name': 'Pueblo', 'selector': 'app-pueblo'},{'name': 'Registrarse', 'selector': 'app-registrarse'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'Pastelito'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'Pastelito.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

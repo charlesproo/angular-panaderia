@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';  
 import { Auth } from '../../../services/auth';
 import { CommonModule } from '@angular/common'; 
+
 @Component({
   selector: 'app-registrarse',
   standalone: true,
@@ -11,6 +12,10 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./registrarse.css']
 })
 export class Registrarse {
+
+  /**
+   * Datos del formulario de registro del usuario.
+   */
   usuario = {
     nombre: '',
     apellido: '',
@@ -18,10 +23,15 @@ export class Registrarse {
     contrasenia: ''
   };
 
-  //Variable para almacenar los mensajes de error de la contraseña
+  /**
+   * Lista de errores detectados durante la validación de la contraseña.
+   * Se muestra dinámicamente en la interfaz.
+   */
   passwordErrors: string[] = []; 
 
-  // Requisitos de la contraseña
+  /**
+   * Reglas de validación que debe cumplir la contraseña.
+   */
   private readonly REQUISITOS = {
     logitudMinima: 8,
     mayusculas: /[A-Z]/,
@@ -30,34 +40,48 @@ export class Registrarse {
     caracterEspecial: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,
   };
 
+  /**
+   * Constructor del componente.
+   * @param authService Servicio de autenticación encargado de almacenar usuarios.
+   * @param router Permite redirigir al usuario tras el registro.
+   */
   constructor(private authService: Auth, private router: Router) { } 
 
-  //Función que verifica si la contraseña cumple con todos los requisitos.
+  /**
+   * Valida si la contraseña del usuario cumple con todos los requisitos:
+   * - Longitud mínima
+   * - Contiene mayúsculas
+   * - Contiene minúsculas
+   * - Contiene dígitos numéricos
+   * - Contiene caracteres especiales
+   * 
+   * @returns `true` si la contraseña es válida, `false` si no cumple los requisitos.
+   */
   validarContrasenia(): boolean {
     const clave = this.usuario.contrasenia;
-    this.passwordErrors = []; // Limpiar errores anteriores
+    this.passwordErrors = []; 
     
-    // 1. Longitud Mínima
+    // Longitud mínima
     if (clave.length < this.REQUISITOS.logitudMinima) {
       this.passwordErrors.push(`Debe tener al menos ${this.REQUISITOS.logitudMinima} caracteres.`);
     }
 
-    // 2. Mayus
+    // Mayúsculas
     if (!this.REQUISITOS.mayusculas.test(clave)) {
       this.passwordErrors.push('Debe incluir al menos una letra mayúscula.');
     }
 
-    // 3. Minusculas
+    // Minúsculas
     if (!this.REQUISITOS.minusculas.test(clave)) {
       this.passwordErrors.push('Debe incluir al menos una letra minúscula.');
     }
 
-    // 4. Numeros
+    // Números
     if (!this.REQUISITOS.numeros.test(clave)) {
       this.passwordErrors.push('Debe incluir al menos un número.');
     }
 
-    // 5. Caracteres especiales
+    // Caracter especial
     if (!this.REQUISITOS.caracterEspecial.test(clave)) {
       this.passwordErrors.push('Debe incluir al menos un carácter especial (ej. !@#$%).');
     }
@@ -65,27 +89,40 @@ export class Registrarse {
     return this.passwordErrors.length === 0;
   }
 
+  /**
+   * Maneja el envío del formulario:
+   * 1. Verifica que todos los campos estén completos.
+   * 2. Valida la contraseña con los requisitos definidos.
+   * 3. Almacena el nuevo usuario en el servicio.
+   * 4. Navega a la pantalla inicial tras un registro exitoso.
+   * 5. Limpia los campos del formulario.
+   */
   onSubmit(): void {
-    // 1. Verificar que todos los campos obligatorios estén llenos
+    // Validar campos obligatorios
     if (!this.usuario.nombre || !this.usuario.apellido || !this.usuario.email || !this.usuario.contrasenia) {
       alert('⚠️ Por favor, complete todos los campos.');
       return; 
     }
     
-    // 2. Ejecutar la validación detallada de la contraseña
+    // Validación de contraseña
     if (!this.validarContrasenia()) {
-      // Si hay errores, los mensajes ya están en 'this.passwordErrors'.
-      // Puedes mostrar un resumen o dejar que el HTML muestre la lista detallada.
       alert('❌ La contraseña no cumple con los requisitos de seguridad.');
       return;
     }
 
-    // 3. Si todo es válido: Almacenar usuario, Navegar y Limpiar
-    this.authService.almacenarUsuario(this.usuario.nombre, this.usuario.apellido, this.usuario.email, this.usuario.contrasenia);
+    // Registrar usuario
+    this.authService.almacenarUsuario(
+      this.usuario.nombre,
+      this.usuario.apellido,
+      this.usuario.email,
+      this.usuario.contrasenia
+    );
+
     alert('✅ Usuario registrado correctamente');
     
     this.router.navigate(['']);  
     
+    // Limpiar formulario
     this.usuario = { nombre: '', apellido: '', contrasenia: '', email: ''};
   }
 }
