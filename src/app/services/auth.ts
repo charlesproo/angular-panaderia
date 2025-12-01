@@ -20,12 +20,21 @@ export class Auth {
   constructor() {
     // RECUPERAMOS LOS USUARIOS ALMACENADOS EN EL LOCAL STORAGE
     const almacenUsuarios = localStorage.getItem('usuarios');
-    
+
     // SI HAY DATOS, LOS PARSEAMOS Y LOS ASIGNAMOS AL ARRAY DE USUARIOS
     if (almacenUsuarios) {
       this.usuarios = JSON.parse(almacenUsuarios);
-    } else {
-      // SI NO HAY USUARIOS EN EL LOCAL STORAGE, CREAMOS UN USUARIO POR DEFECTO
+    }
+
+    // CREAMOS UN USUARIO POR DEFECTO SIEMPRE, YA SEA QUE HAYA O NO USUARIOS EN LOCAL STORAGE
+    this.crearUsuarioPorDefecto();
+  }
+
+  // FUNCION PARA CREAR UN USUARIO POR DEFECTO
+  private crearUsuarioPorDefecto(): void {
+    const usuarioDefecto = this.usuarios.find(usuario => usuario.email === 'fernando.prueba@angular.com');
+
+    if (!usuarioDefecto) {
       this.almacenarUsuario('Fernando', 'Prueba', 'fernando.prueba@angular.com', '12345678Fp.');
     }
   }
