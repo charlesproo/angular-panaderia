@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Pan } from './pan';
+import { RouterTestingModule } from '@angular/router/testing'; 
 
 describe('Pan', () => {
   let component: Pan;
@@ -8,9 +8,11 @@ describe('Pan', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Pan]
-    })
-    .compileComponents();
+      imports: [
+        Pan,               
+        RouterTestingModule  
+      ]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Pan);
     component = fixture.componentInstance;

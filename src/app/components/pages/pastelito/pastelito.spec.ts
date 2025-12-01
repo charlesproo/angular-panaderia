@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Pastelito } from './pastelito';
+import { RouterTestingModule } from '@angular/router/testing'; // <-- IMPORTANTE
 
 describe('Pastelito', () => {
   let component: Pastelito;
@@ -8,9 +8,11 @@ describe('Pastelito', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Pastelito]
-    })
-    .compileComponents();
+      imports: [
+        Pastelito,
+        RouterTestingModule // <-- Provee ActivatedRoute y Router para tests
+      ]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Pastelito);
     component = fixture.componentInstance;

@@ -1,25 +1,20 @@
-//IMPORTAMOS EL MODULO DE PRUEBAS DE ANGULAR Y EL COMPONENTE APP PRINCIPAL
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
+import { RouterTestingModule } from '@angular/router/testing'; // Para RouterOutlet y ActivatedRoute
 
-//GRUPO DE PRUEBAS PARA EL COMPONENTE PRINCIPAL 'APP'
 describe('App', () => {
-  //BLOQUE QUE SE EJECUTA ANTES DE CADA PRUEBA COMO UN FOREACH
   beforeEach(async () => {
-    //CONFIGURAMOS EL AMBIENTE DE PRUEBAS DEL MODULO
     await TestBed.configureTestingModule({
-      imports: [App],
-    }).compileComponents(); //COMPILA LOS COMPONENTES DECLARADOS EN EL TESTBED
+      imports: [
+        App,                  // Tu componente standalone
+        RouterTestingModule   // Provee Router y ActivatedRoute en tests
+      ],
+    }).compileComponents();
   });
 
-  //VERIFICA QUE EL COMPONENTE PRINCIPAL SE HAYA CORRECTAMENTE
   it('should create the app', () => {
-    //CREAMOS UNA INSTANCIA DEL COMPONENTE App DENTRO DE UN ENTORNO DE PRUEBA 
-    const prueba = TestBed.createComponent(App);
-    //OBTENEMOS LA INSTANCIA DE LA CLASE DEL COMPONENTE
-    const app = prueba.componentInstance;
-    //ESPERAMOS QUE LA INSTANCIA DEL COMPONENTE EXISTA
+    const fixture = TestBed.createComponent(App);
+    const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
-
 });
