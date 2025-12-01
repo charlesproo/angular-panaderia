@@ -1,10 +1,20 @@
-/* Reset de márgenes y padding */
+/* --------------------------------------------------------------------------
+ * RESET GENERAL
+ * Elimina márgenes, rellenos por defecto y ajusta el modelo de caja para
+ * que el cálculo de tamaños sea consistente.
+ * -------------------------------------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* --------------------------------------------------------------------------
+ * ESTILOS GENERALES DEL CUERPO
+ * - Define la fuente predeterminada.
+ * - Aplica color de fondo gris claro.
+ * - Define color de texto y altura de línea para mejorar la legibilidad.
+ * -------------------------------------------------------------------------- */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -12,25 +22,52 @@ body {
     line-height: 1.6;
 }
 
+/* --------------------------------------------------------------------------
+ * CABECERA PRINCIPAL
+ * - Fondo marrón oscuro.
+ * - Texto en blanco.
+ * - Centrado tanto horizontalmente como vertical.
+ * - Espaciado vertical amplio.
+ * -------------------------------------------------------------------------- */
 header {
     background-color: #5D4037;
     color: white;
     text-align: center;
     padding: 2em 0;
 }
+
+/* --------------------------------------------------------------------------
+ * CONTENEDOR GENERAL
+ * - Limita el ancho al 80% de la pantalla.
+ * - Centra el contenido horizontalmente.
+ * - Alineación del texto al centro.
+ * -------------------------------------------------------------------------- */
 .container {
     width: 80%;
     margin: 0 auto;
     text-align: center;
 }
 
+/* --------------------------------------------------------------------------
+ * TÍTULOS H2
+ * - Espaciado superior.
+ * - Aumento del tamaño de fuente.
+ * - Color marrón para mantener coherencia visual.
+ * -------------------------------------------------------------------------- */
 h2 {
     margin-top: 2em;
     font-size: 1.8em;
     color: #5D4037;
 }
 
-/* Estilo de los productos */
+/* --------------------------------------------------------------------------
+ * TARJETA DE PRODUCTO
+ * - Se colocan en línea para formar filas.
+ * - Ancho del 23% para que quepan 4 por fila (con márgenes).
+ * - Fondo blanco con sombra para dar efecto de tarjeta.
+ * - Bordes redondeados para un diseño más moderno.
+ * - Alineación del contenido centrada.
+ * -------------------------------------------------------------------------- */
 .product {
     display: inline-block;
     width: 23%;
@@ -43,31 +80,48 @@ h2 {
     text-align: center;
 }
 
-/* Asegura que los enlaces dentro de los productos no tengan subrayado */
+/* --------------------------------------------------------------------------
+ * ENLACES DENTRO DE PRODUCTOS
+ * - Se elimina el subrayado predeterminado.
+ * - El color se hereda para no romper la estética general del producto.
+ * -------------------------------------------------------------------------- */
 .product a {
-    text-decoration: none;  /* Elimina el subrayado */
-    color: inherit;         /* Hereda el color del texto */
+    text-decoration: none;
+    color: inherit;
 }
 
-/* Estilo de las imágenes de los productos */
+/* --------------------------------------------------------------------------
+ * IMÁGENES DE PRODUCTOS
+ * - Ocuparán todo el ancho disponible (100%).
+ * - Altura unificada a 200px para mantener consistencia visual.
+ * - object-fit: cover evita deformaciones y recorta lo necesario.
+ * - Bordes redondeados y margen inferior para separación.
+ * -------------------------------------------------------------------------- */
 .product img {
-    width: 100%;          /* Ancho completo */
-    height: 200px;        /* Altura fija para todas las imágenes */
-    object-fit: cover;    /* Mantiene la proporción y recorta la imagen si es necesario */
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
 }
 
-/* Estilo del título de los productos */
+/* --------------------------------------------------------------------------
+ * TÍTULO DENTRO DE CADA PRODUCTO
+ * - Color marrón coherente con el diseño general.
+ * - Margen inferior para separar del contenido siguiente.
+ * -------------------------------------------------------------------------- */
 .product h3 {
     color: #5D4037;
     margin-bottom: 10px;
 }
 
-/* Estilo de la descripción de los productos */
+/* --------------------------------------------------------------------------
+ * DESCRIPCIÓN DEL PRODUCTO
+ * - Texto gris suave y tamaño de fuente más pequeño.
+ * - Margen inferior para separación respecto a otros elementos.
+ * -------------------------------------------------------------------------- */
 .product p {
     color: #555;
     font-size: 14px;
     margin-bottom: 10px;
 }
-

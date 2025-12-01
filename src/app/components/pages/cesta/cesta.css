@@ -1,9 +1,17 @@
+/**
+ * Reset general
+ * Elimina márgenes y padding, aplica box-sizing border-box.
+ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/**
+ * Estilos generales del body
+ * Fuente, color de fondo, color de texto y line-height.
+ */
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f4f4f4;
@@ -11,6 +19,10 @@ body {
     line-height: 1.6;
 }
 
+/**
+ * Header de la página
+ * Fondo marrón, texto blanco, centrado, padding y sombra.
+ */
 header {
     background-color: #5D4037;
     color: white;
@@ -19,16 +31,28 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/**
+ * Título del header
+ * Tamaño de fuente y margen inferior.
+ */
 header h1 {
     font-size: 2.2em;
     margin-bottom: 0.2em;
 }
 
+/**
+ * Descripción del header
+ * Tamaño de fuente más pequeño y peso ligero.
+ */
 header p {
     font-size: 1em;
     font-weight: 300;
 }
 
+/**
+ * Contenedor principal
+ * Máximo ancho, centrado, padding y margen.
+ */
 .container {
     max-width: 1000px;
     width: 95%;
@@ -37,6 +61,10 @@ header p {
     padding: 20px;
 }
 
+/**
+ * Títulos de sección
+ * Color marrón, tamaño de fuente, margen inferior y alineación izquierda.
+ */
 h2 {
     font-size: 1.8em;
     color: #5D4037;
@@ -44,6 +72,10 @@ h2 {
     text-align: left;
 }
 
+/**
+ * Estilo general de tablas
+ * Ancho completo, separación de bordes, fondo blanco, sombra y radio de borde.
+ */
 table {
     width: 100%;
     border-collapse: separate;
@@ -56,6 +88,10 @@ table {
     text-align: left;
 }
 
+/**
+ * Encabezado de la tabla
+ * Fondo marrón oscuro, texto blanco, padding, mayúsculas y negrita.
+ */
 thead th {
     background-color: #795548;
     color: white;
@@ -64,16 +100,27 @@ thead th {
     text-transform: uppercase;
 }
 
+/**
+ * Celdas del cuerpo de la tabla
+ * Padding, borde inferior y alineación vertical al medio.
+ */
 tbody td {
     padding: 15px 10px;
     border-bottom: 1px solid #eee;
     vertical-align: middle;
 }
 
+/**
+ * Quitar borde inferior de la última fila
+ */
 tbody tr:last-child td {
     border-bottom: none;
 }
 
+/**
+ * Pie de tabla
+ * Padding, fuente más grande y negrita, fondo claro y borde superior.
+ */
 tfoot td {
     padding: 20px 10px;
     font-size: 1.2em;
@@ -82,6 +129,11 @@ tfoot td {
     border-top: 2px solid #5D4037;
 }
 
+/**
+ * Etiquetas y valores de total
+ * .total-label alineado a la derecha con color marrón, 
+ * .total-value color verde y tamaño mayor.
+ */
 .total-label {
     text-align: right;
     color: #5D4037;
@@ -91,6 +143,10 @@ tfoot td {
     font-size: 1.3em;
 }
 
+/**
+ * Botones generales y estilos de enlaces con clase .btn-*
+ * Padding, borde redondeado, cursor pointer, transición y texto centrado.
+ */
 button, .btn-primary, .btn-secondary {
     display: inline-block;
     padding: 10px 20px;
@@ -104,6 +160,10 @@ button, .btn-primary, .btn-secondary {
     text-align: center;
 }
 
+/**
+ * Botón eliminar
+ * Fondo rojo, texto blanco y tamaño más pequeño.
+ */
 .btn-eliminar {
     background-color: #d32f2f;
     color: white;
@@ -114,6 +174,10 @@ button, .btn-primary, .btn-secondary {
     transform: translateY(-1px);
 }
 
+/**
+ * Botón primario
+ * Fondo marrón, texto blanco y efecto hover.
+ */
 .btn-primary {
     background-color: #5D4037;
     color: white;
@@ -122,6 +186,10 @@ button, .btn-primary, .btn-secondary {
     background-color: #4e342e;
 }
 
+/**
+ * Botón secundario
+ * Fondo gris, texto marrón, borde y efecto hover.
+ */
 .btn-secondary {
     background-color: #e0e0e0;
     color: #5D4037;
@@ -131,11 +199,19 @@ button, .btn-primary, .btn-secondary {
     background-color: #d6d6d6;
 }
 
+/**
+ * Contenedor de acciones de checkout
+ * Alineación a la derecha y margen superior.
+ */
 .checkout-actions {
     text-align: right;
     margin-top: 20px;
 }
 
+/**
+ * Mensaje cuando la cesta está vacía
+ * Padding, centrado, fondo blanco, borde redondeado y sombra.
+ */
 .cesta-vacia {
     padding: 50px;
     text-align: center;
@@ -143,17 +219,19 @@ button, .btn-primary, .btn-secondary {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
-
 .cesta-vacia i {
     color: #ccc;
     margin-bottom: 20px;
 }
-
 .cesta-vacia h3 {
     color: #5D4037;
     margin-bottom: 10px;
 }
 
+/**
+ * Responsive para pantallas ≤768px
+ * Hace que la tabla sea de bloque y oculta el header, ajusta las celdas para mostrar etiquetas antes de los valores.
+ */
 @media (max-width: 768px) {
     table, thead, tbody, th, td, tr { 
         display: block; 
@@ -199,5 +277,4 @@ button, .btn-primary, .btn-secondary {
         text-align: left !important;
         float: left;
     }
-    
 }

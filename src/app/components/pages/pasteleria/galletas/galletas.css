@@ -1,9 +1,17 @@
+/**
+ * Reset global
+ * Elimina márgenes y padding por defecto y define box-sizing para todos los elementos.
+ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/**
+ * Body
+ * Define fuente principal, color de fondo, color de texto y altura de línea.
+ */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -11,6 +19,10 @@ body {
     line-height: 1.6;
 }
 
+/**
+ * Cabecera
+ * Fondo oscuro, texto centrado y padding vertical.
+ */
 header {
     background-color: #5D4037;
     color: white;
@@ -18,6 +30,11 @@ header {
     padding: 2em 0;
 }
 
+/**
+ * Título y párrafo dentro del header
+ * h1: tamaño grande y margen inferior
+ * p: tamaño de fuente mediano y peso ligero
+ */
 header h1 {
     font-size: 2.5em;
     margin-bottom: 0.5em;
@@ -28,12 +45,20 @@ header p {
     font-weight: 300;
 }
 
+/**
+ * Contenedor principal
+ * Centra el contenido y define ancho máximo.
+ */
 .container {
     width: 80%;
     margin: 0 auto;
     text-align: center;
 }
 
+/**
+ * Títulos h2
+ * Estilo para subtítulos de secciones
+ */
 h2 {
     margin-top: 2em;
     font-size: 1.8em;
@@ -41,6 +66,10 @@ h2 {
     margin-bottom: 1em;
 }
 
+/**
+ * Producto
+ * Caja individual para productos con fondo, sombra, borde redondeado, padding y transición
+ */
 .product {
     display: inline-block;
     width: 30%;
@@ -54,11 +83,19 @@ h2 {
     transition: transform 0.3s ease;
 }
 
+/**
+ * Enlaces dentro de productos
+ * Sin subrayado y color heredado
+ */
 .product a {
     text-decoration: none;
     color: inherit;
 }
 
+/**
+ * Imágenes de productos
+ * Ajuste de tamaño, proporción, borde redondeado y margen inferior
+ */
 .product img {
     width: 100%;
     height: 200px;
@@ -67,6 +104,11 @@ h2 {
     margin-bottom: 15px;
 }
 
+/**
+ * Título y descripción del producto
+ * h3: color y tamaño
+ * p: color, tamaño de fuente y margen inferior
+ */
 .product h3 {
     color: #5D4037;
     margin-bottom: 10px;
@@ -79,6 +121,10 @@ h2 {
     margin-bottom: 10px;
 }
 
+/**
+ * Botón de producto
+ * Color de fondo, borde redondeado, padding, cursor, tamaño de fuente y transición
+ */
 .product button {
     background-color: #5D4037;
     color: white;
@@ -90,14 +136,26 @@ h2 {
     transition: background-color 0.3s ease;
 }
 
+/**
+ * Hover del botón
+ * Cambio de color al pasar el ratón
+ */
 .product button:hover {
     background-color: #4E342E;
 }
 
+/**
+ * Hover del producto
+ * Levanta la tarjeta del producto ligeramente al pasar el ratón
+ */
 .product:hover {
     transform: translateY(-5px);
 }
 
+/**
+ * Pie de página
+ * Fondo oscuro, texto blanco, centrado, padding y margen superior
+ */
 footer {
     background-color: #5D4037;
     color: white;
@@ -108,6 +166,10 @@ footer {
     margin-top: 2em;
 }
 
+/**
+ * Media queries
+ * Ajuste de ancho de productos para pantallas medianas y pequeñas
+ */
 @media (max-width: 768px) {
     .product {
         width: 45%;

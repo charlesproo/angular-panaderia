@@ -1,4 +1,8 @@
-/* ESTILO GENERAL PARA EL NAV */
+/**
+ * Estilo general del navbar
+ * Barra de navegación con fondo oscuro, texto blanco, padding, fuente Arial,
+ * y uso de flexbox para distribuir el logo y los enlaces.
+ */
 nav.lineaNavegacion {
     background-color: #333; 
     color: white; 
@@ -9,7 +13,10 @@ nav.lineaNavegacion {
     align-items: center;
 }
 
-/* ESTILO DEL LOGO DENTRO DE LA BARRA DE NAVEGACIÓN */
+/**
+ * Estilo del logo dentro del navbar
+ * Texto blanco, tamaño grande, negrita y sin subrayado.
+ */
 nav .logo a {
     color: white;
     font-size: 24px;
@@ -17,7 +24,11 @@ nav .logo a {
     font-weight: bold;
 }
 
-/* ESTILO DE LA LISTA NO ORDENADA QUE CONTIENE LOS ENLACES PRINCIPALES */
+/**
+ * Estilo de la lista de enlaces principales
+ * Quita los bullets, usa flexbox para alinearlos horizontalmente,
+ * sin margen ni padding.
+ */
 nav .links {
     list-style: none;
     display: flex;
@@ -25,13 +36,20 @@ nav .links {
     padding: 0;
 }
 
-/* ESTILO DE CADA ITEM DE LA LISTA DE ENLACES  */
+/**
+ * Estilo de cada item de la lista de enlaces
+ * Posición relativa y margen derecho para separar los enlaces.
+ */
 nav .links li {
     position: relative;
     margin-right: 20px;
 }
 
-/* ESTILO DE LOS ENLACES INDIVIDUALES CON LA ETIQUETA A */
+/**
+ * Estilo de los enlaces individuales
+ * Color blanco, sin subrayado, padding interno, bloque, tamaño de fuente,
+ * y transformación de texto a mayúsculas.
+ */
 nav .links a {
     color: white;
     text-decoration: none;
@@ -41,12 +59,19 @@ nav .links a {
     text-transform: uppercase;
 }
 
-/* EFECTO HOVER DE LOS ENLACES */
+/**
+ * Efecto hover de los enlaces principales
+ * Cambia el fondo a un gris más claro.
+ */
 nav .links a:hover {
     background-color: #555; 
 }
 
-/* ESTILOS PARA EL SUBMENÚ */
+/**
+ * Estilo del submenú
+ * Lista sin bullets, posición absoluta debajo del item padre,
+ * fondo oscuro, oculto por defecto, ancho mínimo y z-index elevado.
+ */
 nav .links ul {
     list-style: none;
     position: absolute;
@@ -60,23 +85,34 @@ nav .links ul {
     z-index: 10;
 }
 
-/* MUESTRA EL SUBMENÚ CUANDO EL RATÓN ESTÁ SOBRE EL ITEM DE LISTA */
+/**
+ * Mostrar submenú al pasar el ratón sobre el item padre
+ */
 nav .links li:hover > ul {
     display: block; 
 }
 
-/* ESTILO DE LOS ENLACES DENTRO DEL SUBMENÚ */
+/**
+ * Estilo de los enlaces dentro del submenú
+ * Padding y tamaño de fuente más pequeño.
+ */
 nav .links ul li a {
     padding: 10px;
     font-size: 14px;
 }
 
-/*EFECTO HOVER DE LOS ENLACES DENTRO DEL SUBMENÚ */
+/**
+ * Efecto hover de los enlaces dentro del submenú
+ * Fondo más claro al pasar el ratón.
+ */
 nav .links ul li a:hover {
     background-color: #555;
 }
 
-/*  ESTILO PARA LA LÍNEA QUE SEPARA LOS ITEMS DE NAVEGACIÓN */
+/**
+ * Línea que separa los items de navegación
+ * Borde inferior de color gris oscuro.
+ */
 nav .lineaNavegacion {
     border-bottom: 2px solid #444;
 }

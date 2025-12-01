@@ -1,9 +1,18 @@
+/* --------------------------------------------------------------------------
+ * RESET GLOBAL
+ * Elimina márgenes y padding por defecto y define box-sizing para todos los 
+ * elementos. 
+ * -------------------------------------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* --------------------------------------------------------------------------
+ * BODY
+ * Define fuente principal, color de fondo, color de texto y altura de línea.
+ * -------------------------------------------------------------------------- */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -11,6 +20,10 @@ body {
     line-height: 1.6;
 }
 
+/* --------------------------------------------------------------------------
+ * CABECERA
+ * Fondo oscuro, texto centrado, padding vertical.
+ * -------------------------------------------------------------------------- */
 header {
     background-color: #5D4037;
     color: white;
@@ -18,6 +31,10 @@ header {
     padding: 2em 0;
 }
 
+/* --------------------------------------------------------------------------
+ * TÍTULO Y PARÁGRAFO DEL HEADER
+ * Estilos para el h1 y el p dentro de la cabecera.
+ * -------------------------------------------------------------------------- */
 header h1 {
     font-size: 2.5em;
     margin-bottom: 0.5em;
@@ -28,12 +45,20 @@ header p {
     font-weight: 300;
 }
 
+/* --------------------------------------------------------------------------
+ * CONTENEDOR PRINCIPAL
+ * Centraliza contenido y define ancho máximo.
+ * -------------------------------------------------------------------------- */
 .container {
     width: 80%;
     margin: 0 auto;
     text-align: center;
 }
 
+/* --------------------------------------------------------------------------
+ * TÍTULOS H2
+ * Estilo para subtítulos de secciones.
+ * -------------------------------------------------------------------------- */
 h2 {
     margin-top: 2em;
     font-size: 1.8em;
@@ -41,6 +66,11 @@ h2 {
     margin-bottom: 1em;
 }
 
+/* --------------------------------------------------------------------------
+ * PRODUCTO
+ * Caja individual para productos con fondo, sombra, borde redondeado, 
+ * padding y transición para hover.
+ * -------------------------------------------------------------------------- */
 .product {
     display: inline-block;
     width: 30%;
@@ -54,11 +84,19 @@ h2 {
     transition: transform 0.3s ease;
 }
 
+/* --------------------------------------------------------------------------
+ * ENLACES DENTRO DE PRODUCTOS
+ * Elimina subrayado y hereda color.
+ * -------------------------------------------------------------------------- */
 .product a {
     text-decoration: none;
     color: inherit;
 }
 
+/* --------------------------------------------------------------------------
+ * IMÁGENES DE PRODUCTOS
+ * Ajusta tamaño, proporción, bordes y margen inferior.
+ * -------------------------------------------------------------------------- */
 .product img {
     width: 100%;
     height: 200px;
@@ -67,6 +105,10 @@ h2 {
     margin-bottom: 15px;
 }
 
+/* --------------------------------------------------------------------------
+ * TÍTULO Y DESCRIPCIÓN DEL PRODUCTO
+ * Estilos de h3 y p dentro de cada producto.
+ * -------------------------------------------------------------------------- */
 .product h3 {
     color: #5D4037;
     margin-bottom: 10px;
@@ -79,6 +121,10 @@ h2 {
     margin-bottom: 10px;
 }
 
+/* --------------------------------------------------------------------------
+ * BOTÓN DE PRODUCTO
+ * Estilo de botones con color de fondo, borde redondeado, padding y efecto hover.
+ * -------------------------------------------------------------------------- */
 .product button {
     background-color: #5D4037;
     color: white;
@@ -94,10 +140,18 @@ h2 {
     background-color: #4E342E;
 }
 
+/* --------------------------------------------------------------------------
+ * EFECTO HOVER DE PRODUCTO
+ * Levanta el producto ligeramente al pasar el ratón.
+ * -------------------------------------------------------------------------- */
 .product:hover {
     transform: translateY(-5px);
 }
 
+/* --------------------------------------------------------------------------
+ * PIE DE PÁGINA
+ * Fondo oscuro, texto blanco, centrado y padding.
+ * -------------------------------------------------------------------------- */
 footer {
     background-color: #5D4037;
     color: white;
@@ -108,6 +162,10 @@ footer {
     margin-top: 2em;
 }
 
+/* --------------------------------------------------------------------------
+ * RESPONSIVE DESIGN
+ * Ajustes de ancho de productos para pantallas pequeñas.
+ * -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
     .product {
         width: 45%;

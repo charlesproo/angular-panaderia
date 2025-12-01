@@ -1,4 +1,7 @@
-/* Estilos generales para el navbar */
+/**
+ * Navbar general
+ * Define el fondo oscuro, color de texto blanco, padding y distribución con flexbox.
+ */
 nav.lineaNavegacion {
     background-color: #333; /* Fondo oscuro */
     color: white;
@@ -9,6 +12,10 @@ nav.lineaNavegacion {
     align-items: center;
 }
 
+/**
+ * Logo dentro del navbar
+ * Color blanco, tamaño de fuente grande y negrita.
+ */
 nav .logo a {
     color: white;
     font-size: 24px;
@@ -16,7 +23,10 @@ nav .logo a {
     font-weight: bold;
 }
 
-/* Estilo de los enlaces de navegación */
+/**
+ * Lista de enlaces del navbar
+ * Quita los puntos de lista y organiza los enlaces en fila.
+ */
 nav .links {
     list-style: none;
     display: flex;
@@ -24,11 +34,19 @@ nav .links {
     padding: 0;
 }
 
+/**
+ * Elementos de la lista de navegación
+ * Posición relativa para permitir submenús y margen a la derecha.
+ */
 nav .links li {
     position: relative;
     margin-right: 20px;
 }
 
+/**
+ * Enlaces principales del navbar
+ * Color blanco, sin subrayado, padding, bloque y texto en mayúsculas.
+ */
 nav .links a {
     color: white;
     text-decoration: none;
@@ -38,11 +56,18 @@ nav .links a {
     text-transform: uppercase;
 }
 
+/**
+ * Efecto hover de los enlaces
+ * Cambia el fondo al pasar el ratón.
+ */
 nav .links a:hover {
     background-color: #555; /* Hover de los enlaces */
 }
 
-/* Estilos para el submenú */
+/**
+ * Submenús del navbar
+ * Posicionamiento absoluto, fondo oscuro, oculto por defecto, mínimo ancho y alto z-index.
+ */
 nav .links ul {
     list-style: none;
     position: absolute;
@@ -56,31 +81,51 @@ nav .links ul {
     z-index: 10;
 }
 
+/**
+ * Mostrar submenú al pasar el ratón sobre el elemento padre.
+ */
 nav .links li:hover > ul {
-    display: block; /* Mostrar el submenú al pasar el ratón */
+    display: block;
 }
 
+/**
+ * Enlaces dentro de submenú
+ * Padding y tamaño de fuente menor que el principal.
+ */
 nav .links ul li a {
     padding: 10px;
     font-size: 14px;
 }
 
+/**
+ * Efecto hover de enlaces dentro del submenú
+ * Cambia el fondo al pasar el ratón.
+ */
 nav .links ul li a:hover {
     background-color: #555;
 }
 
-/* Estilos para los submenús dentro de otros submenús */
+/**
+ * Submenús dentro de submenús
+ * Posición relativa al menú padre.
+ */
 nav .links ul ul {
     left: 100%;
     top: 0;
 }
 
-/* Estilo para la línea que separa los items de navegación */
+/**
+ * Línea inferior del navbar
+ * Bordes para separar visualmente los elementos.
+ */
 nav .lineaNavegacion {
     border-bottom: 2px solid #444;
 }
 
-/* Estilos del formulario de inicio de sesión */
+/**
+ * Contenedor del formulario de registro/inicio de sesión
+ * Ancho del 50%, centrado, padding, borde, radio de borde y fondo gris claro.
+ */
 .registro-container {
     width: 50%;
     margin: 30px auto;
@@ -90,22 +135,38 @@ nav .lineaNavegacion {
     background-color: #f4f4f4;
 }
 
+/**
+ * Título del formulario
+ * Centrado, tamaño de fuente grande y margen inferior.
+ */
 .registro-container h2 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 1.8em;
 }
 
+/**
+ * Grupo de formulario
+ * Margen inferior entre campos.
+ */
 .form-group {
     margin-bottom: 15px;
 }
 
+/**
+ * Etiquetas de formulario
+ * Bloque, tamaño de fuente y margen inferior.
+ */
 .form-group label {
     display: block;
     font-size: 1em;
     margin-bottom: 5px;
 }
 
+/**
+ * Inputs del formulario
+ * Ancho completo, padding, tamaño de fuente, borde y borde redondeado.
+ */
 .form-group input {
     width: 100%;
     padding: 8px;
@@ -114,17 +175,28 @@ nav .lineaNavegacion {
     border: 1px solid #ddd;
 }
 
+/**
+ * Input de tipo submit
+ * Fondo oscuro, texto blanco y cursor pointer.
+ */
 .form-group input[type="submit"] {
     background-color: #333;
     color: white;
     cursor: pointer;
 }
 
+/**
+ * Efecto hover del submit
+ * Cambia el fondo al pasar el ratón.
+ */
 .form-group input[type="submit"]:hover {
     background-color: #555;
 }
 
-/* Estilos del mensaje de error */
+/**
+ * Mensajes de error
+ * Color rojo, tamaño de fuente normal, centrado y margen superior.
+ */
 .error-message {
     color: red;
     font-size: 1em;

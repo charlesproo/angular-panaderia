@@ -746,7 +746,12 @@ export class Registrarse {
                 <p class="comment">
                     <code>./registrarse.css</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">/* Estilos generales para el navbar */
+                <pre class="line-numbers"><code class="language-scss">/* --------------------------------------------------------------------------
+ * NAVBAR GENERAL
+ * Define la barra de navegación principal con fondo oscuro, color de texto 
+ * blanco, padding y tipografía. Se utiliza flexbox para alinear elementos 
+ * y distribuir el espacio.
+ * -------------------------------------------------------------------------- */
 nav.lineaNavegacion {
     background-color: #333; /* Fondo oscuro */
     color: white;
@@ -757,6 +762,11 @@ nav.lineaNavegacion {
     align-items: center;
 }
 
+/* --------------------------------------------------------------------------
+ * LOGO
+ * Estilo del enlace del logo dentro del navbar: color blanco, tamaño de fuente,
+ * sin subrayado y con negrita.
+ * -------------------------------------------------------------------------- */
 nav .logo a {
     color: white;
     font-size: 24px;
@@ -764,7 +774,11 @@ nav .logo a {
     font-weight: bold;
 }
 
-/* Estilo de los enlaces de navegación */
+/* --------------------------------------------------------------------------
+ * ENLACES DE NAVEGACIÓN
+ * Contenedor principal de links: sin lista de estilo, flexbox, sin márgenes 
+ * ni padding.
+ * -------------------------------------------------------------------------- */
 nav .links {
     list-style: none;
     display: flex;
@@ -772,11 +786,21 @@ nav .links {
     padding: 0;
 }
 
+/* --------------------------------------------------------------------------
+ * ITEM DE LINK
+ * Posicionamiento relativo para manejar submenús, margen derecho para separar 
+ * enlaces.
+ * -------------------------------------------------------------------------- */
 nav .links li {
     position: relative;
     margin-right: 20px;
 }
 
+/* --------------------------------------------------------------------------
+ * ENLACES INDIVIDUALES
+ * Color blanco, sin subrayado, padding, display block, tamaño de fuente y 
+ * texto en mayúsculas.
+ * -------------------------------------------------------------------------- */
 nav .links a {
     color: white;
     text-decoration: none;
@@ -786,11 +810,19 @@ nav .links a {
     text-transform: uppercase;
 }
 
+/* --------------------------------------------------------------------------
+ * HOVER EN LINKS
+ * Cambio de fondo al pasar el ratón.
+ * -------------------------------------------------------------------------- */
 nav .links a:hover {
     background-color: #555; /* Hover de los enlaces */
 }
 
-/* Estilos para el submenú */
+/* --------------------------------------------------------------------------
+ * SUBMENÚ
+ * Contenedor de submenús oculto por defecto, con posición absoluta y fondo
+ * oscuro. Define ancho mínimo y z-index para superposición.
+ * -------------------------------------------------------------------------- */
 nav .links ul {
     list-style: none;
     position: absolute;
@@ -804,31 +836,53 @@ nav .links ul {
     z-index: 10;
 }
 
+/* --------------------------------------------------------------------------
+ * MOSTRAR SUBMENÚ
+ * Al pasar el ratón sobre el item padre, se muestra el submenú.
+ * -------------------------------------------------------------------------- */
 nav .links li:hover &gt; ul {
-    display: block; /* Mostrar el submenú al pasar el ratón */
+    display: block;
 }
 
+/* --------------------------------------------------------------------------
+ * ENLACES DENTRO DEL SUBMENÚ
+ * Padding y tamaño de fuente específico.
+ * -------------------------------------------------------------------------- */
 nav .links ul li a {
     padding: 10px;
     font-size: 14px;
 }
 
+/* --------------------------------------------------------------------------
+ * HOVER EN ENLACES DE SUBMENÚ
+ * Cambio de fondo al pasar el ratón sobre los enlaces.
+ * -------------------------------------------------------------------------- */
 nav .links ul li a:hover {
     background-color: #555;
 }
 
-/* Estilos para los submenús dentro de otros submenús */
+/* --------------------------------------------------------------------------
+ * SUBMENÚ ANIDADO
+ * Posicionamiento a la derecha del submenú principal.
+ * -------------------------------------------------------------------------- */
 nav .links ul ul {
     left: 100%;
     top: 0;
 }
 
-/* Estilo para la línea que separa los items de navegación */
+/* --------------------------------------------------------------------------
+ * LÍNEA DE SEPARACIÓN DEL NAVBAR
+ * Borde inferior para separar visualmente los items.
+ * -------------------------------------------------------------------------- */
 nav .lineaNavegacion {
     border-bottom: 2px solid #444;
 }
 
-/* Estilos del formulario */
+/* --------------------------------------------------------------------------
+ * FORMULARIO DE REGISTRO
+ * Contenedor centrado, ancho definido, padding, borde, bordes redondeados y 
+ * fondo claro.
+ * -------------------------------------------------------------------------- */
 .registro-container {
     width: 50%;
     margin: 30px auto;
@@ -838,22 +892,38 @@ nav .lineaNavegacion {
     background-color: #f4f4f4;
 }
 
+/* --------------------------------------------------------------------------
+ * TÍTULO DEL FORMULARIO
+ * Centrando el texto, margen inferior y tamaño de fuente mayor.
+ * -------------------------------------------------------------------------- */
 .registro-container h2 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 1.8em;
 }
 
+/* --------------------------------------------------------------------------
+ * GRUPO DE FORMULARIO
+ * Márgenes para separar los distintos campos.
+ * -------------------------------------------------------------------------- */
 .form-group {
     margin-bottom: 15px;
 }
 
+/* --------------------------------------------------------------------------
+ * ETIQUETAS DE FORMULARIO
+ * Mostrar bloque, tamaño de fuente y margen inferior.
+ * -------------------------------------------------------------------------- */
 .form-group label {
     display: block;
     font-size: 1em;
     margin-bottom: 5px;
 }
 
+/* --------------------------------------------------------------------------
+ * INPUTS DE FORMULARIO
+ * Ocupa 100% del ancho, padding, borde redondeado y borde definido.
+ * -------------------------------------------------------------------------- */
 .form-group input {
     width: 100%;
     padding: 8px;
@@ -862,12 +932,20 @@ nav .lineaNavegacion {
     border: 1px solid #ddd;
 }
 
+/* --------------------------------------------------------------------------
+ * BOTÓN SUBMIT
+ * Fondo oscuro, color blanco y cursor pointer.
+ * -------------------------------------------------------------------------- */
 .form-group input[type&#x3D;&quot;submit&quot;] {
     background-color: #333;
     color: white;
     cursor: pointer;
 }
 
+/* --------------------------------------------------------------------------
+ * HOVER DEL BOTÓN SUBMIT
+ * Cambio de color de fondo al pasar el ratón.
+ * -------------------------------------------------------------------------- */
 .form-group input[type&#x3D;&quot;submit&quot;]:hover {
     background-color: #555;
 }
