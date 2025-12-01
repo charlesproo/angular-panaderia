@@ -16,16 +16,16 @@ describe('Auth Service', () => {
   });
 
   it('Debe guardar al usuario con la clave encriptada', () => {
-    const plainPassword = 'Password123!';
-    service.almacenarUsuario('Juan', 'Pérez', 'juan@correo.com', plainPassword);
+    const clavePrueba = 'Password123!';
+    service.almacenarUsuario('Juan', 'Pérez', 'juan@correo.com', clavePrueba);
 
     const usuarios: any[] = JSON.parse(localStorage.getItem('usuarios')!);
     expect(usuarios.length).toBeGreaterThan(0);
 
-    const stored = usuarios.find(u => u.email === 'juan@correo.com');
-    expect(stored).toBeTruthy();
-    expect(stored.contrasenia).not.toBe(plainPassword); 
-    expect(bcrypt.compareSync(plainPassword, stored.contrasenia)).toBeTrue();
+    const almacen = usuarios.find(u => u.email === 'juan@correo.com');
+    expect(almacen).toBeTruthy();
+    expect(almacen.contrasenia).not.toBe(clavePrueba); 
+    expect(bcrypt.compareSync(clavePrueba, almacen.contrasenia)).toBeTrue();
   });
 
   it('Debe validar las credenciales correctas', () => {
