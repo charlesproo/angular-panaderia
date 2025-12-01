@@ -57,7 +57,7 @@ export class InicioSesion {
       this.errorMessage = ''; 
       setTimeout(() => {
         this.router.navigate(['']); 
-      }, 2000); 
+      }, 1000); 
     } else {
       this.errorMessage = 'Credenciales incorrectas. Inténtalo de nuevo.';
       this.successMessage = ''; 
