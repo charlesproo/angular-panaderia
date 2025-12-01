@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './registrarse.html',
   styleUrls: ['./registrarse.css']
 })
-export class RegistrarseComponent {
+export class Registrarse {
   usuario = {
     nombre: '',
     apellido: '',
