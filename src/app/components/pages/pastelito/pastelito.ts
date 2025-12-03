@@ -12,9 +12,11 @@ import { RouterLink } from "@angular/router";
   selector: 'app-pastelito',
   imports: [RouterLink],
   templateUrl: './pastelito.html',
-  styleUrl: './pastelito.css',
+  styleUrls: ['./pastelito.css'], // Corregido styleUrl -> styleUrls
 })
 export class Pastelito {
+
+  mostrarCta: boolean = true; 
 
   /**
    * Constructor del componente Pastelito.
