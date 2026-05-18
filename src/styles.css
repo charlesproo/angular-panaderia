@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+
+*:focus-visible {
+  outline: 3px solid #ff6347;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: #ff6347;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 9999;
+  border-radius: 0 0 6px 0;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #333;
+  outline-offset: 2px;
+}
+
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+.campo-obligatorio {
+  color: #cc0000;
+  margin-left: 2px;
+  font-weight: bold;
+}
+.leyenda-obligatorio {
+  font-size: 0.85em;
+  color: #555;
+  margin-bottom: 12px;
+  display: block;
+}

@@ -116,3 +116,49 @@ nav .links ul li a:hover {
 nav .lineaNavegacion {
     border-bottom: 2px solid #444;
 }
+/* ACCESIBILIDAD: focus visible en todos los enlaces del menú (WCAG 2.4.7) */
+nav .links a:focus-visible,
+nav .links a:focus {
+    outline: 3px solid #ff6347;
+    outline-offset: 2px;
+    background-color: #555;
+    border-radius: 3px;
+}
+
+nav .logo a:focus-visible,
+nav .logo a:focus {
+    outline: 3px solid #ff6347;
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+/* ACCESIBILIDAD: abrir submenú también con foco de teclado */
+nav .links li:focus-within > ul {
+    display: block;
+}
+
+/* ACCESIBILIDAD: Botón cerrar sesión con mismo aspecto que los enlaces */
+.btn-cerrar-sesion {
+    background: none;
+    border: none;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    display: block;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    text-align: left;
+}
+.btn-cerrar-sesion:hover {
+    background-color: #555;
+}
+.btn-cerrar-sesion:focus-visible,
+.btn-cerrar-sesion:focus {
+    outline: 3px solid #ff6347;
+    outline-offset: 2px;
+    background-color: #555;
+    border-radius: 3px;
+}

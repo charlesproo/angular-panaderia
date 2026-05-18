@@ -203,3 +203,47 @@ nav .lineaNavegacion {
     text-align: center;
     margin-top: 10px;
 }
+/* ACCESIBILIDAD: focus visible en inputs */
+.form-group input:focus,
+.form-group input:focus-visible {
+    outline: 3px solid #ff6347;
+    outline-offset: 1px;
+    border-color: #ff6347;
+    box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.25);
+}
+/* Input inválido */
+.form-group input[aria-invalid="true"] {
+    border-color: #cc0000;
+    background-color: #fff3f3;
+}
+/* USABILIDAD: botón submit */
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-submit:hover { background-color: #555; }
+.btn-submit:focus, .btn-submit:focus-visible {
+    outline: 3px solid #ff6347;
+    outline-offset: 2px;
+}
+/* Mensaje éxito */
+.success-message {
+    color: #006600;
+    background-color: #f0fff0;
+    border: 1px solid #006600;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 1em;
+    text-align: center;
+    margin-top: 10px;
+}
+/* Campos obligatorios */
+.campo-obligatorio { color: #cc0000; margin-left: 2px; font-weight: bold; }
+.leyenda-obligatorio { font-size: 0.85em; color: #555; margin-bottom: 12px; display: block; }

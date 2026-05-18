@@ -1,15 +1,32 @@
-<footer class="footer">
+<!-- ACCESIBILIDAD: role="contentinfo" es el landmark del pie de página -->
+<footer class="footer" role="contentinfo">
   <div class="footer-content">
     <p>&copy; 2025 Panadería El Pastelito. Todos los derechos reservados.</p>
-    <ul class="footer-links">
-      <li><a href="https://panaderia-deliciosa.com/terminos">Términos y Condiciones</a></li>
-      <li><a href="https://panaderia-deliciosa.com/privacidad">Política de Privacidad</a></li>
-      <li><a href="https://panaderia-deliciosa.com/contacto">Contáctanos</a></li>
-    </ul>
+    <!-- ACCESIBILIDAD: nav con aria-label diferente al de la cabecera -->
+    <nav aria-label="Enlaces legales del pie de página">
+      <ul class="footer-links">
+        <li><a href="https://panaderia-deliciosa.com/terminos">Términos y Condiciones</a></li>
+        <li><a href="https://panaderia-deliciosa.com/privacidad">Política de Privacidad</a></li>
+        <li><a href="https://panaderia-deliciosa.com/contacto">Contáctanos</a></li>
+      </ul>
+    </nav>
   </div>
-  <div class="footer-social">
-    <a href="https://www.facebook.com/panaderiaelpastelito" target="_blank" class="social-icon facebook">Facebook</a>
-    <a href="https://www.instagram.com/panaderiaelpastelito" target="_blank" class="social-icon instagram">Instagram</a>
-    <a href="https://twitter.com/panaderiaelpastelito" target="_blank" class="social-icon twitter">Twitter</a>
-  </div>
+  <!-- ACCESIBILIDAD: nav separado para redes sociales -->
+  <nav class="footer-social" aria-label="Redes sociales">
+    <a href="https://www.facebook.com/panaderiaelpastelito"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="social-icon facebook"
+       aria-label="Facebook - se abre en nueva pestaña">Facebook</a>
+    <a href="https://www.instagram.com/panaderiaelpastelito"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="social-icon instagram"
+       aria-label="Instagram - se abre en nueva pestaña">Instagram</a>
+    <a href="https://twitter.com/panaderiaelpastelito"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="social-icon twitter"
+       aria-label="Twitter - se abre en nueva pestaña">Twitter</a>
+  </nav>
 </footer>

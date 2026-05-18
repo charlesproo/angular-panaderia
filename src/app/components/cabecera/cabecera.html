@@ -1,40 +1,73 @@
-<nav class="lineaNavegacion">
-    <div class="logo">
-        <a routerLink="">Pastelito</a>
-    </div>
-    <ul class="links">
-        <li><a routerLink="pan">Pan</a>
-            <ul>
-                <li><a routerLink="integral">Integral</a></li>
-                <li><a routerLink="blanco">Blanco</a></li>
-                <li><a routerLink="lenia">Leña</a></li>
-                <li><a routerLink="pueblo">Pueblo</a></li>
-            </ul>
-        </li>
-        <li><a routerLink="pasteleria">Pasteleria</a>
-            <ul>
-                <li><a routerLink="bizcocho">Bizcocho</a></li>
-                <li><a routerLink="galletas">Galletas</a></li>
-                <li><a routerLink="croissant">Croissant</a></li>
-                <li><a routerLink="magdalenas">Magdalenas</a></li>
-            </ul>
-        </li>
-        
-        <li *ngIf="auth.isLoggedIn">
-            <a routerLink="cesta">
-                <i class="fas fa-shopping-basket"></i> Cesta
-            </a>
-        </li>
+<!-- ACCESIBILIDAD: <header role="banner"> es el landmark principal de cabecera -->
+<header role="banner">
+  <nav class="lineaNavegacion" aria-label="Navegación principal">
 
-        <li *ngIf="!auth.isLoggedIn">
-            <a routerLink="inicio-sesion">Iniciar Sesión</a>
-        </li>
-        
-        <li *ngIf="!auth.isLoggedIn">
-            <a routerLink="registrarse">Registrarse</a>
-        </li>
-        <li *ngIf="auth.isLoggedIn">
-            <a (click)="cerrarSesion()" style="cursor: pointer;">Cerrar Sesión</a>
-        </li>
+    <div class="logo">
+      <!-- ACCESIBILIDAD: aria-label descriptivo en el logo -->
+      <a routerLink="" aria-label="Panadería El Pastelito - Ir al inicio">Pastelito</a>
+    </div>
+
+    <ul class="links" role="menubar" aria-label="Menú principal">
+
+      <li role="none">
+        <!-- ACCESIBILIDAD: aria-haspopup y aria-expanded indican submenú -->
+        <a routerLink="pan"
+           role="menuitem"
+           aria-haspopup="true"
+           aria-expanded="false">
+          Pan
+        </a>
+        <ul role="menu" aria-label="Submenú de Pan">
+          <li role="none"><a routerLink="integral" role="menuitem" tabindex="-1">Integral</a></li>
+          <li role="none"><a routerLink="blanco" role="menuitem" tabindex="-1">Blanco</a></li>
+          <li role="none"><a routerLink="lenia" role="menuitem" tabindex="-1">Leña</a></li>
+          <li role="none"><a routerLink="pueblo" role="menuitem" tabindex="-1">Pueblo</a></li>
+        </ul>
+      </li>
+
+      <li role="none">
+        <a routerLink="pasteleria"
+           role="menuitem"
+           aria-haspopup="true"
+           aria-expanded="false">
+          Pasteleria
+        </a>
+        <ul role="menu" aria-label="Submenú de Pastelería">
+          <li role="none"><a routerLink="bizcocho" role="menuitem" tabindex="-1">Bizcocho</a></li>
+          <li role="none"><a routerLink="galletas" role="menuitem" tabindex="-1">Galletas</a></li>
+          <li role="none"><a routerLink="croissant" role="menuitem" tabindex="-1">Croissant</a></li>
+          <li role="none"><a routerLink="magdalenas" role="menuitem" tabindex="-1">Magdalenas</a></li>
+        </ul>
+      </li>
+
+      <li role="none" *ngIf="auth.isLoggedIn">
+        <a routerLink="cesta"
+           role="menuitem"
+           aria-label="Ir a la cesta de la compra">
+          <i class="fas fa-shopping-basket" aria-hidden="true"></i> Cesta
+        </a>
+      </li>
+
+      <li role="none" *ngIf="!auth.isLoggedIn">
+        <a routerLink="inicio-sesion" role="menuitem">Iniciar Sesión</a>
+      </li>
+
+      <li role="none" *ngIf="!auth.isLoggedIn">
+        <a routerLink="registrarse" role="menuitem">Registrarse</a>
+      </li>
+
+      <li role="none" *ngIf="auth.isLoggedIn">
+        <!-- ACCESIBILIDAD: button para acción sin href, con aria-busy -->
+        <button
+          (click)="cerrarSesion()"
+          role="menuitem"
+          class="btn-cerrar-sesion"
+          [attr.aria-busy]="isLoggingOut"
+          [attr.aria-label]="isLoggingOut ? 'Cerrando sesión...' : 'Cerrar sesión'">
+          {{ isLoggingOut ? 'Cerrando...' : 'Cerrar Sesión' }}
+        </button>
+      </li>
+
     </ul>
-</nav>
+  </nav>
+</header>

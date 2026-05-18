@@ -1,5 +1,53 @@
+<!-- ACCESIBILIDAD: Skip link para saltar la navegación con teclado (WCAG 2.4.1) -->
+<a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
+
 <app-cabecera></app-cabecera>
-<main class="contenido">
+
+<!-- ACCESIBILIDAD: role="search" identifica la región de búsqueda para lectores -->
+<section
+  class="buscador-global"
+  *ngIf="mostrarBuscador()"
+  role="search"
+  aria-label="Búsqueda de productos">
+
+  <div class="search-container">
+    <div class="input-wrapper">
+      <!-- ACCESIBILIDAD: label oculto vinculado al input -->
+      <label for="buscador-global" class="sr-only">Buscar productos</label>
+      <input
+        id="buscador-global"
+        type="search"
+        [(ngModel)]="textoBuscar"
+        placeholder="Busca panes, bizcochos..."
+        autocomplete="off"
+        aria-autocomplete="list"
+        aria-controls="lista-sugerencias"
+        [attr.aria-expanded]="sugerenciasFiltradas.length > 0"
+        aria-label="Buscar productos en la tienda">
+
+      <!-- ACCESIBILIDAD: role="listbox" en la lista de sugerencias -->
+      <ul
+        id="lista-sugerencias"
+        class="results-list"
+        role="listbox"
+        aria-label="Sugerencias de búsqueda"
+        *ngIf="sugerenciasFiltradas.length > 0">
+        <li
+          *ngFor="let item of sugerenciasFiltradas"
+          role="option"
+          [attr.aria-label]="'Ir a ' + item.nombre">
+          <a (click)="irAPagina(item.link)" style="cursor: pointer;">
+            {{ item.nombre }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESIBILIDAD: <main> con id para el skip-link y role="main" -->
+<main id="contenido-principal" role="main">
   <router-outlet></router-outlet>
 </main>
+
 <app-pie></app-pie>

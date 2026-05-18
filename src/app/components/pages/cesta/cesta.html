@@ -8,6 +8,7 @@
 
     <div *ngIf="cesta.cestaItems().length > 0; else emptyCart" class="cesta-content">
         <table>
+            <caption class="sr-only">Resumen de productos en tu cesta de compra</caption>
             <thead>
                 <tr>
                     <th>Producto</th>
@@ -24,7 +25,9 @@
                     <td>{{ item.cantidad }}</td>
                     <td>{{ (item.cantidad * item.precioUnitario) | number:'1.2-2' }}€</td>
                     <td>
-                        <button class="btn-eliminar" (click)="eliminarItem(item.id)">
+                       <button class="btn-eliminar"
+                                (click)="eliminarItem(item.id)"
+                                [attr.aria-label]="'Eliminar ' + item.nombre + ' de la cesta'">
                             Eliminar
                         </button>
                     </td>

@@ -1,31 +1,86 @@
 <div class="home-container">
   <header class="header">
-    <!-- Imagen de fondo de la cabecera -->
     <div class="header-content">
       <h1>Panadería El Pastelito</h1>
-      <p>El sabor de lo hecho en casa, panes y pasteles recién horneados con cariño.</p>
-      <a href="#productos" class="btn-main">Ver nuestros productos</a>
+      <p>El sabor de lo hecho en casa, panes y pasteles recién horneados.</p>
     </div>
   </header>
 
-  <section id="productos" class="product-categories">
-    <!-- Categoría de Panes Artesanales -->
-    <div class="category category-panes">
-      <img src="https://thumbs.dreamstime.com/b/delicioso-surtido-de-pan-reci%C3%A9n-horneado-en-un-fondo-r%C3%BAstico-oscuro-200072569.jpg" alt="Panes Artesanales" class="category-image">
-      <div class="category-info">
-        <h2>Panes Artesanales</h2>
-        <p>Desde baguettes hasta panes integrales, todo hecho con los mejores ingredientes.</p>
-        <a routerLink="/pan" class="btn-primary">Ver más</a>
+
+ <section class="video-section" aria-labelledby="titulo-video">
+  <div class="container">
+    <h2 id="titulo-video">Así elaboramos nuestro pan</h2>
+   
+
+    <div class="video-wrapper">
+      <iframe 
+        src="https://www.youtube.com/embed/LrB2kWg33hg?si=JS2MBhWT_2u8zWvh" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        allowfullscreen
+        class="responsive-iframe">
+      </iframe>
+    </div>
+
+  
+    <div class="transcripcion">
+      <h3>
+        <button
+          class="transcripcion-toggle"
+          (click)="mostrarTranscripcion = !mostrarTranscripcion"
+          [attr.aria-expanded]="mostrarTranscripcion"
+          aria-controls="texto-transcripcion">
+          {{ mostrarTranscripcion ? '▲ Ocultar' : '▼ Mostrar' }} transcripción del vídeo
+        </button>
+      </h3>
+      <div
+        id="texto-transcripcion"
+        [style.display]="mostrarTranscripcion ? 'block' : 'none'"
+        class="transcripcion-texto"
+        role="region"
+        aria-label="Transcripción del vídeo">
+        <p><strong>[00:00]</strong> Bienvenidos a la Panadería El Pastelito.</p>
+        <p><strong>[00:15]</strong> Comenzamos mezclando la harina con la masa madre y el agua.</p>
+        <p><strong>[00:40]</strong> Amasamos durante 15 minutos hasta conseguir una masa elástica.</p>
+        <p><strong>[01:10]</strong> Dejamos reposar la masa tapada durante 8 horas de fermentación lenta.</p>
+        <p><strong>[01:30]</strong> Formamos la hogaza y la colocamos en el banetón para su forma final.</p>
+        <p><strong>[02:00]</strong> Horneamos en horno de piedra a 240°C durante 35 minutos.</p>
+        <p><strong>[02:20]</strong> El resultado: pan crujiente por fuera y esponjoso por dentro.</p>
       </div>
     </div>
 
-    <!-- Categoría de El Pastelitos -->
-    <div class="category category-pastelito">
-      <img src="https://png.pngtree.com/thumb_back/fh260/background/20230527/pngtree-large-group-of-different-desserts-on-a-black-background-image_2677193.jpg" alt="El Pastelito" class="category-image">
-      <div class="category-info">
-        <h2>Pasteleria</h2>
-        <p>Pasteles, tartas y galletas recién horneadas para todo tipo de celebraciones.</p>
-        <a routerLink="/pasteleria" class="btn-primary">Ver más</a>
+  </div>
+</section>
+
+  <!-- Sección buscador (sin cambios en funcionalidad) -->
+  <section id="catalogo" class="product-grid"
+           *ngIf="textoBuscar.length > 0"
+           aria-label="Resultados de búsqueda">
+    <div class="container">
+      <div class="grid-wrapper">
+        <div class="product-card" *ngFor="let producto of productosFiltrados">
+          <div class="img-container">
+            <img [src]="producto.img" [alt]="producto.nombre">
+          </div>
+          <div class="product-info">
+            <span class="category-tag">{{ producto.categoria }}</span>
+            <h3>{{ producto.nombre }}</h3>
+            <p class="price">{{ producto.precio | currency:'EUR' }}</p>
+            <!-- ACCESIBILIDAD: aria-label con nombre y precio -->
+            <button (click)="anadirProducto(producto.id, producto.nombre, producto.precio)"
+                    [attr.aria-label]="'Añadir ' + producto.nombre + ' al carrito'">
+              Añadir al carrito
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="productosFiltrados.length === 0"
+           class="no-results"
+           role="status"
+           aria-live="polite">
+        <p>No se han encontrado resultados para tu búsqueda.</p>
       </div>
     </div>
   </section>

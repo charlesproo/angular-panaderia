@@ -1,0 +1,88 @@
+.buscador-global {
+    background-color: #fdf2f0;
+    padding: 20px;
+    border-bottom: 2px solid #ff6347;
+    display: flex;
+    justify-content: center;
+}
+
+.search-container {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.input-wrapper {
+    position: relative; 
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: 2px solid #ccc;
+    outline: none;
+}
+
+/* Estilos del desplegable */
+.results-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 0 0 15px 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    text-align: left;
+}
+
+.results-list li a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+.results-list li a:hover {
+    background-color: #ff6347;
+    color: white;
+}
+
+
+input:focus,
+input:focus-visible {
+    border-color: #ff6347;
+    box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.35);
+    outline: 3px solid #ff6347;
+    outline-offset: 1px;
+}
+
+.results-list li:last-child a {
+    border-bottom: none;
+    border-radius: 0 0 15px 15px;
+}
+
+/* ACCESIBILIDAD: focus en sugerencias de la lista */
+.results-list li a:focus {
+    background-color: #ff6347;
+    color: white;
+    outline: 2px solid #333;
+    outline-offset: -2px;
+}
+
+.input-wrapper::after {
+    content: '🔍';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+  
+}
+
